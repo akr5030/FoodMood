@@ -7,44 +7,43 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TreeView;
 
 /**
- * The FoodMoodScatterplotViewController is the FXML controller for the
- * scatterplot analytics view of food vs mood.
+ * FXML Controller class for the mood log view.
  *
- * The user can select the mood and date range to be displayed. If the start
- * date occurs after the end date the plot will not be updated.
+ * The mood log shows the moods the user has logged within the specified date
+ * range. The moods are displayed as a line chart and as a list. Users can
+ * delete mood records.
+ *
+ * On first launch it will display the records entered for the current day and
+ * seven days previous. The user can change the date range.
  *
  * @author jsm158
  */
-public class FoodMoodScatterplotViewController implements Initializable {
+public class MoodLogViewController implements Initializable {
 
-    // TODO replace Object with the actual classes before submitting
+    // TODO replace Object with real classes
     /**
-     * The list of food records to include in the report
-     */
-    private ObservableList<Object> foods;
-
-    /**
-     * The list of mood records to include in the report
-     */
-    private ObservableList<Object> moods;
-
-    /**
-     * The scatter chart view
+     * ObservableList for the mood records to display
      */
     @FXML
-    private ScatterChart<Integer, Integer> scatterChart;
+    private ObservableList<Object> moodList;
 
     /**
-     * The combo box for selecting the mood to display
+     * The line chart for displaying moods
      */
     @FXML
-    private ComboBox<Object> moodSelectorComboBox;
+    private LineChart lineChart;
+
+    /**
+     * The tree view for displaying the list of moods
+     */
+    @FXML
+    private TreeView treeView;
 
     /**
      * The date picker for the start date
@@ -65,6 +64,12 @@ public class FoodMoodScatterplotViewController implements Initializable {
     private Button updateViewButton;
 
     /**
+     * Constructs a new MoodLogViewController
+     */
+    public MoodLogViewController() {
+    }
+
+    /**
      * Initializes the controller class.
      *
      * @param url the url (path) to the associated FXML document
@@ -76,7 +81,7 @@ public class FoodMoodScatterplotViewController implements Initializable {
     }
 
     /**
-     * Updates the view to show the selected date range and mood
+     * Updates the view to show the selected date range
      *
      * @param e the action event associated with the button
      */
@@ -85,17 +90,26 @@ public class FoodMoodScatterplotViewController implements Initializable {
     }
 
     /**
-     * Updates the ObservableLists for food and mood records for the selected
-     * mood and date range.
+     * Deletes the selected mood record
+     *
+     * @param e the associated event
+     */
+    public void handleDeleteRecordButton(ActionEvent e) {
+        // TODO
+    }
+
+    /**
+     * Updates the ObservableList for mood records for the selected mood and
+     * date range.
      *
      * Throws an IllegalArgumentException if the startDate occurs after the end
      * date.
      *
-     * @param mood the mood to display
      * @param startDate the start date
      * @param endDate the end date
      */
-    private void getRecords(Object mood, Date startDate, Date endDate) {
+    private void getRecords(Date startDate, Date endDate) {
 
     }
+
 }
