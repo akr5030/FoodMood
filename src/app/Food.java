@@ -36,39 +36,59 @@ public class Food {
     * Returns the id
     * @return An integer for the id
     */  
-    public int id(){
+    public int getId(){
         return id;
+    }
+    
+    public void setId(int id){
+        this.id=id;
     }
     
     /**
     * Returns the foodName
     * @return A string for the food name
     */    
-    public String foodName(){
+    public String getFoodName(){
         return foodName;
+    }
+    
+    public void setFoodName(String foodName){
+        this.foodName=foodName;
     }
     
     /**
      * Returns the servingSize
      * @return An integer for the serving size
      */
-    public int servingSize(){
+    public int getServingSize(){
         return servingSize;
+    }
+    
+    public void setServingSize(int servingSize){
+        this.servingSize=servingSize;
     }
     
     /**
      * Returns the foodDate
      * @return A DatePicker for the food date
      */
-    public DatePicker foodDate(){
+    public DatePicker getFoodDate(){
         return foodDate;
+    }
+    
+    public void setFoodDate(DatePicker foodDate){
+        this.foodDate=foodDate;
     }
     
     /**
      * Returns the foodGroup
      * @return A string for the food group
      */
-    public String foodGroup(){
+    public String getFoodGroup(){
         return foodGroup;
+    }
+    
+    public void setFoodGroup(String foodGroup){
+        this.foodGroup=foodGroup;
     }
 }
