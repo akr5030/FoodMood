@@ -15,16 +15,20 @@ public class Food {
     private String foodName;
     private int servingSize;
     private DatePicker foodDate;
+    private int id;
+    private String foodGroup;   
     
     /**
     * This is the default constructor for the Food class.
     * @param foodName
     * @param servingSize
     * @param foodDate
-    */  
-    public Food(String foodName, int servingSize, DatePicker foodDate){
+    */     
+    public Food(int id, String foodName, int servingSize, String foodGroup, DatePicker foodDate){
+        this.id = id;
         this.foodName = foodName;
         this.servingSize = servingSize;
+        this.foodGroup = foodGroup;
         this.foodDate = foodDate;
     }
     
