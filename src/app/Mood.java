@@ -31,24 +31,36 @@ public class Mood {
     * Returns the mood ID
     * @return An integer for the ID
     */ 
-    public int id(){
+    public int getId(){
         return id;
+    }
+    
+    public void setId(int id){
+        this.id=id;
     }
     
     /**
     * Returns the moodType
     * @return A slider for the food name
     */ 
-    public Slider moodType(){
+    public Slider getMoodType(){
         return moodType;
+    }
+    
+    public void setMoodType(Slider moodType){
+        this.moodType=moodType;
     }
     
     /**
      * Returns the moodDate
      * @return A date for the mood date
      */
-    public DatePicker moodDate(){
+    public DatePicker getMoodDate(){
         return moodDate;
+    }
+    
+    public void setMoodDate(DatePicker moodDate){
+        this.moodDate=moodDate;
     }
 }
 
