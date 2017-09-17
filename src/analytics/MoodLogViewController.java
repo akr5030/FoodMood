@@ -58,12 +58,6 @@ public class MoodLogViewController implements Initializable {
     private DatePicker endDatePicker;
 
     /**
-     * The button to update the view with the selected mood and date range
-     */
-    @FXML
-    private Button updateViewButton;
-
-    /**
      * Constructs a new MoodLogViewController
      */
     public MoodLogViewController() {
@@ -85,7 +79,8 @@ public class MoodLogViewController implements Initializable {
      *
      * @param e the action event associated with the button
      */
-    public void handleUpdateViewButton(ActionEvent e) {
+    @FXML
+    private void handleUpdateViewButton(ActionEvent e) {
 
     }
 
@@ -94,7 +89,8 @@ public class MoodLogViewController implements Initializable {
      *
      * @param e the associated event
      */
-    public void handleDeleteRecordButton(ActionEvent e) {
+    @FXML
+    private void handleDeleteRecordButton(ActionEvent e) {
         // TODO
     }
 

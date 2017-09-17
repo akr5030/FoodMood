@@ -58,12 +58,7 @@ public class FoodMoodScatterplotViewController implements Initializable {
     @FXML
     private DatePicker endDatePicker;
 
-    /**
-     * The button to update the view with the selected mood and date range
-     */
-    @FXML
-    private Button updateViewButton;
-
+ 
     /**
      * Initializes the controller class.
      *
@@ -80,7 +75,8 @@ public class FoodMoodScatterplotViewController implements Initializable {
      *
      * @param e the action event associated with the button
      */
-    public void handleUpdateViewButton(ActionEvent e) {
+    @FXML
+    private void handleUpdateViewButton(ActionEvent e) {
 
     }
 

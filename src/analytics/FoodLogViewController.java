@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TreeView;
 
@@ -48,18 +47,6 @@ public class FoodLogViewController implements Initializable {
     private DatePicker endDatePicker;
 
     /**
-     * The button to delete records
-     */
-    @FXML
-    private Button deleteRecordButton;
-
-    /**
-     * The button to update the view
-     */
-    @FXML
-    private Button changeDatesButton;
-
-    /**
      * Constructs a new FoodLogViewController
      */
     public FoodLogViewController() {
@@ -85,7 +72,8 @@ public class FoodLogViewController implements Initializable {
      *
      * @param e
      */
-    public void handleChangeDatesButton(ActionEvent e) {
+    @FXML
+    private void handleChangeDatesButton(ActionEvent e) {
         // TODO
     }
 
@@ -94,7 +82,8 @@ public class FoodLogViewController implements Initializable {
      *
      * @param e the associated event
      */
-    public void handleDeleteRecordButton(ActionEvent e) {
+    @FXML
+    private void handleDeleteRecordButton(ActionEvent e) {
         // TODO
     }
 
