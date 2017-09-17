@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * The MoodRecordDao class provides an interface to read and write mood records
@@ -58,5 +59,17 @@ public class MoodRecordDao {
      */
     public void saveMoodRecords(List<Object> moodRecords) {
 
+    }
+    
+       /**
+     * Generates a new, unique ID for the mood entry
+     * 
+     * Creating the ID elsewhere is not recommended as uniqueness needs to be
+     * enforced.
+     * 
+     * @return a new unique ID
+     */
+    private UUID generateRecordId() throws DaoException {
+        return null;
     }
 }
