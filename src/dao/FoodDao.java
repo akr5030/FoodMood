@@ -11,10 +11,13 @@ import java.util.ArrayList;
  */
 public class FoodDao {
 
+    private final ConnectionManager cm;
+    
     /**
      * Constructs a new FoodDao
      */
     public FoodDao() {
+        cm = new ConnectionManager();
     }
 
     /**

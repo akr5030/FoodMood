@@ -12,11 +12,14 @@ import java.util.ArrayList;
  *
  */
 public class MoodDao {
+    
+    private final ConnectionManager cm;
 
     /**
      * Constructs a new MoodDao
      */
     public MoodDao() {
+        this.cm = new ConnectionManager();
     }
 
     /**

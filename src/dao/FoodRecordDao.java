@@ -14,8 +14,11 @@ import java.util.UUID;
  * @author jsm158
  */
 public class FoodRecordDao {
+    
+    private final ConnectionManager cm;
 
     public FoodRecordDao() {
+        this.cm = new ConnectionManager();
     }
 
     /**

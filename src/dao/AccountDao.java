@@ -9,11 +9,14 @@ import java.util.ArrayList;
  *
  */
 public class AccountDao {
+    
+    private final ConnectionManager cm;
 
     /**
      * Constructs a new AccountDao
      */
     public AccountDao() {
+        cm = new ConnectionManager();
     }
 
     /**
