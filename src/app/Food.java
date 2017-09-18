@@ -1,35 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app;
 
-import javafx.scene.control.DatePicker;
 
 /**
+ * Food class
+ *
+ * The food class shows the way a user will log a food. It gives options for
+ * the user to type a food name, a serving size (in grams), and the food group.
  *
  * @author aswecker
  */
 public class Food {
     private String foodName;
     private int servingSize;
-    private DatePicker foodDate;
     private int id;
     private String foodGroup;   
     
     /**
     * This is the default constructor for the Food class.
-    * @param foodName
-    * @param servingSize
-    * @param foodDate
+    * @param foodName name of the food a user is logging
+    * @param servingSize the serving size of the food
+    * @param foodGroup the type of food group the user is logging
     */     
-    public Food(int id, String foodName, int servingSize, String foodGroup, DatePicker foodDate){
+    public Food(int id, String foodName, int servingSize, String foodGroup){
         this.id = id;
         this.foodName = foodName;
         this.servingSize = servingSize;
         this.foodGroup = foodGroup;
-        this.foodDate = foodDate;
     }
     
    /**
@@ -59,6 +56,7 @@ public class Food {
     /**
      * Returns the servingSize
      * @return An integer for the serving size
+     * Serving size would be measured in grams (g)
      */
     public int getServingSize(){
         return servingSize;
@@ -67,21 +65,10 @@ public class Food {
     public void setServingSize(int servingSize){
         this.servingSize=servingSize;
     }
+   
     
     /**
-     * Returns the foodDate
-     * @return A DatePicker for the food date
-     */
-    public DatePicker getFoodDate(){
-        return foodDate;
-    }
-    
-    public void setFoodDate(DatePicker foodDate){
-        this.foodDate=foodDate;
-    }
-    
-    /**
-     * Returns the foodGroup
+     * Returns the foods group
      * @return A string for the food group
      */
     public String getFoodGroup(){
