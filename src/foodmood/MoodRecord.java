@@ -20,7 +20,7 @@ public class MoodRecord {
     /**
     * This is the default constructor for the Mood Record Class.
     * @param id the id number of the mood
-    * @param accoundId the account number of the user
+    * @param accountId the account number of the user
     * @param date the date the mood was logged
     * @param mood the mood the user logged
     */ 
