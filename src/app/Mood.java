@@ -1,30 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app;
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
 
 /**
+ * Mood class
+ *
+ * The mood class gives the user the option to he moods the user has logged within the specified date
+ * range. The moods are displayed as a line chart and as a list. Users can
+ * delete mood records.
+ *
+ * On first launch it will display the records entered for the current day and
+ * seven days previous. The user can change the date range.
  *
  * @author aswecker
  */
+
 public class Mood {
     private int id;
+    private String moodName;
     private Slider moodType;
     private DatePicker moodDate;
     
     /**
     * This is the default constructor for the Mood class.
-    * @param moodType
-    * @param moodDate
+    * @param id the id of the mood
+    * @param moodName the name of the mood
     */ 
-    public Mood(Slider moodType, DatePicker moodDate){
-        this.moodType = moodType;
-        this.moodDate = moodDate;
+    public Mood(int id, String moodName){
+        this.id = id;
+        this.moodName = moodName;
     }
     
     /**
@@ -40,28 +45,17 @@ public class Mood {
     }
     
     /**
-    * Returns the moodType
-    * @return A slider for the food name
+    * Returns the mood name
+    * @return A string for the name of the mood
     */ 
-    public Slider getMoodType(){
-        return moodType;
+    public String getMoodName(){
+        return moodName;
     }
     
-    public void setMoodType(Slider moodType){
-        this.moodType=moodType;
+    public void setMoodName(String moodName){
+        this.moodName = moodName;
     }
     
-    /**
-     * Returns the moodDate
-     * @return A date for the mood date
-     */
-    public DatePicker getMoodDate(){
-        return moodDate;
-    }
-    
-    public void setMoodDate(DatePicker moodDate){
-        this.moodDate=moodDate;
-    }
 }
 
 
