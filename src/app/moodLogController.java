@@ -8,6 +8,8 @@ import javafx.scene.control.Slider;
  *
  * @author aswecker
  */
+
+@FXML
 public class moodLogController {
     /**
      * The date picker for the date a user is logging food
