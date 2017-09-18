@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
  *
  * @author aswecker
  */
+
+@FXML
 public class foodLogController {
     /**
      * The date picker for the date a user is logging food
