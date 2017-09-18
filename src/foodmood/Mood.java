@@ -1,4 +1,4 @@
-package app;
+package foodmood;
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;

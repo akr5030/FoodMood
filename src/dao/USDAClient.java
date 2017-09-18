@@ -1,5 +1,7 @@
 package dao;
 
+import foodmood.Food;
+
 /**
  * Provides an interface to searching for a food in the USDA's food database
  *
@@ -37,7 +39,7 @@ public class USDAClient {
      * @return a list of matching foods or null if there is no match or the
      * service is unavailable
      */
-    public Object findFoodsByName(String searchTerm) {
+    public Food findFoodsByName(String searchTerm) {
         return null;
     }
 

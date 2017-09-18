@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.FoodRecord;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +35,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> getFoodRecords(Date startDate, Date endDate, int accountId) throws DaoException {
+    public ArrayList<FoodRecord> getFoodRecords(Date startDate, Date endDate, int accountId) throws DaoException {
         return null;
     }
 
@@ -48,7 +49,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> getFoodRecords(Date startDate, Date endDate) throws DaoException {
+    public ArrayList<FoodRecord> getFoodRecords(Date startDate, Date endDate) throws DaoException {
         return null;
     }
 
@@ -59,7 +60,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public void saveFoodRecord(Object foodRecord) throws DaoException {
+    public void saveFoodRecord(FoodRecord foodRecord) throws DaoException {
 
     }
 
@@ -70,7 +71,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public void saveFoodRecords(List<Object> foodRecords) throws DaoException {
+    public void saveFoodRecords(List<FoodRecord> foodRecords) throws DaoException {
 
     }
     

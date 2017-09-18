@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.Mood;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +30,7 @@ public class MoodDao {
      * @throws DaoException if there is an error connecting to the database or
      * executing the query
      */
-    public ArrayList<Object> getAllMoods() throws DaoException {
+    public ArrayList<Mood> getAllMoods() throws DaoException {
         return null;
     }
 
@@ -40,9 +41,10 @@ public class MoodDao {
      * 
      * @param moodId the mood ID
      * @return the specified mood or null if there is no match
-     * @throws dao.DaoException 
+     * @throws dao.DaoException if there is an error connecting to the database or
+     * executing the query
      */
-    public Object getMoodById(int moodId) throws DaoException {
+    public Mood getMoodById(int moodId) throws DaoException {
         return null;
     }
 }

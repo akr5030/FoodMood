@@ -1,5 +1,6 @@
 package analytics;
 
+import foodmood.FoodRecord;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -26,13 +27,13 @@ public class FoodLogViewController implements Initializable {
      * The list of food records to display
      */
     @FXML
-    private ObservableList<Object> foods;
+    private ObservableList<FoodRecord> foods;
 
     /**
      * The tree list displaying the food records
      */
     @FXML
-    private TreeView<Object> treeView;
+    private TreeView<FoodRecord> treeView;
 
     /**
      * The start date selector

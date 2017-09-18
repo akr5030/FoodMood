@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.Food;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +31,7 @@ public class FoodDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> searchByName(String searchTerm) throws DaoException {
+    public ArrayList<Food> searchByName(String searchTerm) throws DaoException {
         return null;
     }
 
@@ -49,7 +50,7 @@ public class FoodDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> searchByName(String searchTerm, boolean includeExternal) throws DaoException {
+    public ArrayList<Food> searchByName(String searchTerm, boolean includeExternal) throws DaoException {
         return null;
     }
 
@@ -63,7 +64,7 @@ public class FoodDao {
      * @throws DaoException if there is an error connecting to the database or
      * executing the query
      */
-    public Object getFood(int foodId) throws DaoException {
+    public Food getFood(int foodId) throws DaoException {
         return null;
     }
 
@@ -77,7 +78,7 @@ public class FoodDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public void saveFood(Object food) throws DaoException {
+    public void saveFood(Food food) throws DaoException {
 
     }
 

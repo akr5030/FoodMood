@@ -10,7 +10,7 @@ import java.util.Date;
  * @author aswecker
  */
 
-public class moodRecord {
+public class MoodRecord {
     private int id;
     private int accountId;
     private Date date;
@@ -20,11 +20,11 @@ public class moodRecord {
     /**
     * This is the default constructor for the Mood Record Class.
     * @param id the id number of the mood
-    * @param accoundId the account number of the user
+    * @param accountId the account number of the user
     * @param date the date the mood was logged
     * @param mood the mood the user logged
     */ 
-    public moodRecord(int id, int accountId, Date date, String mood){
+    public MoodRecord(int id, int accountId, Date date, String mood){
         this.id = id;
         this.accountId = accountId;
         this.date = date;

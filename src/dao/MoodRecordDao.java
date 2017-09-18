@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.MoodRecord;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,12 +10,12 @@ import java.util.UUID;
 /**
  * The MoodRecordDao class provides an interface to read and write mood records
  * to the application database.
- * 
+ *
  * @author jsm158
  *
  */
 public class MoodRecordDao {
-    
+
     public MoodRecordDao() {
     }
 
@@ -27,7 +28,7 @@ public class MoodRecordDao {
      * @param accountId the ID of the account associated with the records
      * @return the list of mood records
      */
-    public ArrayList<Object> getMoodRecords(Date startDate, Date endDate, int accountId) {
+    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate, int accountId) {
         return null;
     }
 
@@ -39,7 +40,7 @@ public class MoodRecordDao {
      * @param endDate the end of the date range (inclusive)
      * @return the list of mood records
      */
-    public ArrayList<Object> getMoodRecords(Date startDate, Date endDate) {
+    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate) {
         return null;
     }
 
@@ -48,7 +49,7 @@ public class MoodRecordDao {
      *
      * @param moodRecord the mood record to save
      */
-    public void saveMoodRecord(Object moodRecord) {
+    public void saveMoodRecord(MoodRecord moodRecord) {
 
     }
 
@@ -57,16 +58,16 @@ public class MoodRecordDao {
      *
      * @param moodRecords the mood record to save
      */
-    public void saveMoodRecords(List<Object> moodRecords) {
+    public void saveMoodRecords(List<MoodRecord> moodRecords) {
 
     }
-    
-       /**
+
+    /**
      * Generates a new, unique ID for the mood entry
-     * 
+     *
      * Creating the ID elsewhere is not recommended as uniqueness needs to be
      * enforced.
-     * 
+     *
      * @return a new unique ID
      */
     private UUID generateRecordId() throws DaoException {
