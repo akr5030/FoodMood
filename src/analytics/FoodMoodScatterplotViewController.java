@@ -1,5 +1,8 @@
 package analytics;
 
+import foodmood.FoodRecord;
+import foodmood.Mood;
+import foodmood.MoodRecord;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -8,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.ScatterChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 
@@ -27,12 +29,12 @@ public class FoodMoodScatterplotViewController implements Initializable {
     /**
      * The list of food records to include in the report
      */
-    private ObservableList<Object> foods;
+    private ObservableList<FoodRecord> foods;
 
     /**
      * The list of mood records to include in the report
      */
-    private ObservableList<Object> moods;
+    private ObservableList<MoodRecord> moods;
 
     /**
      * The scatter chart view
@@ -91,7 +93,7 @@ public class FoodMoodScatterplotViewController implements Initializable {
      * @param startDate the start date
      * @param endDate the end date
      */
-    private void getRecords(Object mood, Date startDate, Date endDate) {
+    private void getRecords(Mood mood, Date startDate, Date endDate) {
 
     }
 }

@@ -10,7 +10,7 @@ import java.util.Date;
  * @author aswecker
  */
 
-public class foodRecord {
+public class FoodRecord {
     private int id;
     private int accountId;
     private Date date;
@@ -24,7 +24,7 @@ public class foodRecord {
     * @param date the date the food was logged
     * @param food the food the user logged
     */ 
-    public foodRecord(int id, int accountId, Date date, String food){
+    public FoodRecord(int id, int accountId, Date date, String food){
         this.id = id;
         this.accountId = accountId;
         this.date = date;

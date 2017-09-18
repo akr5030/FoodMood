@@ -1,5 +1,6 @@
 package analytics;
 
+import foodmood.MoodRecord;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -8,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TreeView;
 
@@ -31,7 +31,7 @@ public class MoodLogViewController implements Initializable {
      * ObservableList for the mood records to display
      */
     @FXML
-    private ObservableList<Object> moodList;
+    private ObservableList<MoodRecord> moodList;
 
     /**
      * The line chart for displaying moods

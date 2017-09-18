@@ -10,7 +10,7 @@ import java.util.Date;
  * @author aswecker
  */
 
-public class moodRecord {
+public class MoodRecord {
     private int id;
     private int accountId;
     private Date date;
@@ -24,7 +24,7 @@ public class moodRecord {
     * @param date the date the mood was logged
     * @param mood the mood the user logged
     */ 
-    public moodRecord(int id, int accountId, Date date, String mood){
+    public MoodRecord(int id, int accountId, Date date, String mood){
         this.id = id;
         this.accountId = accountId;
         this.date = date;
