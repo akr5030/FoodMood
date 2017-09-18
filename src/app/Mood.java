@@ -6,12 +6,8 @@ import javafx.scene.control.Slider;
 /**
  * Mood class
  *
- * The mood class gives the user the option to he moods the user has logged within the specified date
- * range. The moods are displayed as a line chart and as a list. Users can
- * delete mood records.
- *
- * On first launch it will display the records entered for the current day and
- * seven days previous. The user can change the date range.
+ * The mood class gives the user the option to log moods. The mood
+ * name is the field that a user can edit.
  *
  * @author aswecker
  */
@@ -19,8 +15,6 @@ import javafx.scene.control.Slider;
 public class Mood {
     private int id;
     private String moodName;
-    private Slider moodType;
-    private DatePicker moodDate;
     
     /**
     * This is the default constructor for the Mood class.
