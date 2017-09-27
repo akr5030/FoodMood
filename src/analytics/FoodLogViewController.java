@@ -1,15 +1,26 @@
 package analytics;
 
+import dao.DaoException;
+import dao.FoodRecordDao;
 import foodmood.FoodRecord;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TreeView;
+import javafx.stage.Stage;
+import testHarness.Tests;
 
 /**
  * The controller for the FXML food log viewer.
@@ -27,7 +38,7 @@ public class FoodLogViewController implements Initializable {
      * The list of food records to display
      */
     @FXML
-    private ObservableList<FoodRecord> foods;
+    private ArrayList<FoodRecord> foods;
 
     /**
      * The tree list displaying the food records
@@ -61,7 +72,29 @@ public class FoodLogViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        try {
+            handleChangeDatesButton(null);
+            Tests.testFoodLogViewControllerGetRecords();
+            handleDeleteRecordButton(null);
+            Tests.testFoodLogViewControllerDeleteRecord();
+
+        } catch (DaoException ex) {
+            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Parent root;
+        Scene scene;
+        Stage stage;
+        
+        try {
+            root = FXMLLoader.load(getClass().getResource("/analytics/MoodLogView.fxml"));
+            scene = new Scene(root);
+            stage = (Stage) startDatePicker.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException ex) {
+            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -74,8 +107,12 @@ public class FoodLogViewController implements Initializable {
      * @param e
      */
     @FXML
-    private void handleChangeDatesButton(ActionEvent e) {
-        // TODO
+    private void handleChangeDatesButton(ActionEvent e) throws DaoException {
+        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
+        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
+        FoodRecordDao dao = new FoodRecordDao();
+
+        foods = dao.getFoodRecords(startDate, endDate, 0);
     }
 
     /**
@@ -84,8 +121,10 @@ public class FoodLogViewController implements Initializable {
      * @param e the associated event
      */
     @FXML
-    private void handleDeleteRecordButton(ActionEvent e) {
-        // TODO
+    private void handleDeleteRecordButton(ActionEvent e) throws DaoException {
+        FoodRecordDao dao = new FoodRecordDao();
+//        foods.remove(0);
+        dao.saveFoodRecords(foods);
     }
 
     /**
@@ -97,7 +136,7 @@ public class FoodLogViewController implements Initializable {
      * @param startDate the start date
      * @param endDate the end date
      */
-    private void getRecords(Date startDate, Date endDate) {
+    private void getRecords(LocalDate startDate, LocalDate endDate) {
         // TODO
     }
 

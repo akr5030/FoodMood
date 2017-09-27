@@ -1,8 +1,8 @@
 package dao;
 
 import foodmood.FoodRecord;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,7 +35,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<FoodRecord> getFoodRecords(Date startDate, Date endDate, int accountId) throws DaoException {
+    public ArrayList<FoodRecord> getFoodRecords(LocalDate startDate, LocalDate endDate, int accountId) throws DaoException {
         return null;
     }
 
@@ -49,7 +49,7 @@ public class FoodRecordDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<FoodRecord> getFoodRecords(Date startDate, Date endDate) throws DaoException {
+    public ArrayList<FoodRecord> getFoodRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
         return null;
     }
 

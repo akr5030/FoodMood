@@ -1,4 +1,4 @@
-package TestHarness;
+package testHarness;
 
 /**
  *
@@ -9,21 +9,12 @@ public class Tests {
     private Tests() {
     }
     
-    public boolean testFoodLogViewControllerGetRecords() {
+    public static boolean testFoodLogViewControllerGetRecords() {
         return true;
     }
     
-    public boolean testFoodLogViewControllerDeleteRecord() {
+    public static boolean testFoodLogViewControllerDeleteRecord() {
         return true;
     }
     
-    
-    public static Tests getInstance() {
-        return TestsHolder.INSTANCE;
-    }
-    
-    private static class TestsHolder {
-
-        private static final Tests INSTANCE = new Tests();
-    }
 }
