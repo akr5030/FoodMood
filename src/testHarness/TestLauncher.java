@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  *
  * @author redjen
  */
-public class TestHarness extends Application {
+public class TestLauncher extends Application {
     
     @Override
     public void start(Stage primaryStage) {
@@ -28,7 +28,7 @@ public class TestHarness extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestLauncher.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
 
