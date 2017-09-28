@@ -27,7 +27,7 @@ public class App extends Application {
 
         try {
             root = FXMLLoader.load(getClass().getResource("FoodMood.fxml"));
-            scene = new Scene(root, 300, 250);
+            scene = new Scene(root, 800, 600);
             primaryStage.setTitle("FoodMood");
             primaryStage.setScene(scene);
             primaryStage.show();
