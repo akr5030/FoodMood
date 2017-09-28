@@ -1,5 +1,7 @@
 package testHarness;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -25,16 +27,26 @@ public class TestLauncher extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                Platform.exit();
-                System.exit(0);
-            }
-        });
         Platform.setImplicitExit(true);
         TestHarness.getInstance().setStage(primaryStage);
         TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
+    }
+
+    /**
+     * Stop the application
+     *
+     * The application doesn't shut down normally since it's started from an
+     * external class. System.exit has to be called here to shut down all
+     * threads.
+     */
+    @Override
+    public void stop() {
+        try {
+            System.exit(0);
+
+        } catch (Exception ex) {
+            Logger.getLogger(TestLauncher.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
