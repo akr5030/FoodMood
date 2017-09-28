@@ -8,8 +8,7 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="analytics.MoodLogViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analytics.MoodLogViewController">
    <children>
       <DatePicker fx:id="startDatePicker" layoutX="6.0" layoutY="10.0" promptText="start date" />
       <DatePicker fx:id="endDatePicker" layoutX="400.0" layoutY="10.0" promptText="end date" />
@@ -22,6 +21,6 @@
         </yAxis>
       </LineChart>
       <TreeView fx:id="treeView" layoutX="14.0" layoutY="200.0" prefHeight="200.0" prefWidth="574.0" />
-      <ComboBox fx:id="moodList" layoutX="224.0" layoutY="10.0" prefWidth="150.0" />
+      <ComboBox fx:id="moodComboBox" layoutX="224.0" layoutY="10.0" prefWidth="150.0" promptText="select mood" />
    </children>
 </AnchorPane>
