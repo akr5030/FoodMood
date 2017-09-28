@@ -204,8 +204,7 @@ public class TestHarness {
 
         try {
             Logger.getLogger(TestHarness.class.getName()).log(Level.INFO, document);
-            
-            
+
             root = FXMLLoader.load(getClass().getResource(document));
             scene = new Scene(root, 800, 600);
             primaryStage.setTitle(document);
@@ -249,6 +248,7 @@ public class TestHarness {
                 "Starting application and tests.");
         testSetUp();
         Application.launch(TestLauncher.class, args);
+
     }
 
     /**
