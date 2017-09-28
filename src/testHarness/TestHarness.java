@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -153,7 +153,7 @@ public class TestHarness {
     public void finishTestRun() {
         logger.log(Level.INFO, String.format("TESTS COMPLETE. Total tests: %d [%d passed, %d failed",
                 testsPassed + testsFailed, testsPassed, testsFailed));
-        Platform.exit();
+        primaryStage.close();
     }
 
     /**
@@ -193,7 +193,7 @@ public class TestHarness {
      * @param document the path to the view as a string
      */
     public void changeScene(String document) {
-        Parent root;
+        Pane root;
         Scene scene;
 
         if (primaryStage == null) {
@@ -204,11 +204,12 @@ public class TestHarness {
 
         try {
             Logger.getLogger(TestHarness.class.getName()).log(Level.INFO, document);
+            
+            
             root = FXMLLoader.load(getClass().getResource(document));
-            scene = new Scene(root, 300, 250);
+            scene = new Scene(root, 800, 600);
             primaryStage.setTitle(document);
             primaryStage.setScene(scene);
-            primaryStage.show();
         } catch (IOException ex) {
             logger.log(Level.SEVERE,
                     "Error changing scene to " + document, ex);
@@ -269,14 +270,14 @@ public class TestHarness {
      * @param passed true if the test passed, otherwise false
      */
     private void logTestResult(String testName, boolean passed) {
-        String messageFormat = "Result for %s: %s";
+        String messageFormat = "Result for %s: %b";
 
         if (passed) {
             testsPassed++;
-            logger.log(Level.INFO, String.format(messageFormat, passed));
+            logger.log(Level.INFO, String.format(messageFormat, testName, passed));
         } else {
             testsFailed++;
-            logger.log(Level.SEVERE, String.format(messageFormat, passed));
+            logger.log(Level.SEVERE, String.format(messageFormat, testName, passed));
         }
     }
 
