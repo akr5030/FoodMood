@@ -19,6 +19,11 @@ import javafx.stage.Stage;
  * test environment (create data,etc), run tests, log test results, and tear
  * down the test environment (delete data, etc).
  *
+ * The test process requires a bit of coordination and agreement on the order in
+ * which tests run since each controller is responsible for calling the next.
+ * After all code is checked in we should review the order and update as needed
+ * to make sure all tests are run.
+ *
  *
  * <h2>Running tests</h2>
  *
@@ -35,8 +40,9 @@ import javafx.stage.Stage;
  * creation process is as follows:
  *
  * <ol>
- * <li>Add any logic needed to create test data (such as our list of moods) in
- * the {@link #testSetUp() testSetup} method.</li>
+ * <li>Add any logic needed to create test data (such as our list of moods or
+ * other files that hold data) in the {@link #testSetUp() testSetup}
+ * method.</li>
  *
  * <li>Create a new method name testControllernameTitleOfTest (in the same
  * section as the other test methods).</li>
@@ -45,19 +51,20 @@ import javafx.stage.Stage;
  * message that your test is starting. Call logTestResult in the last line to
  * print the test result. If no more tests should be run if this one passes
  * (which might be the case for method stubs that create data needed for later
- * tests), call {@link Platform#exit() Platform.exit()} to quit the
+ * tests), call {@link #finishTestRun() finishTestRun()} to quit the
  * application.</li>
  *
  * <li>Write the method stub in your controller class.</li>
  *
  * <li>Run the test from your method stub (after the code that does stuff) by
- * calling the appropriate test method as
- * TestHarness.getInstance().testName().</li>
+ * calling the appropriate test method as TestHarness.getInstance().testName().
+ * You can run multiple tests.</li>
  *
- * <li>Run the next test with
+ * <li>Once all tests in the class have finished, load the next view to run its
+ * tests (at the end of your initialize method stub) with
  * {@link #changeScene(java.lang.String) TestHarness.getInstance().changeScene}
- * OR, call {@link #finishTestRun() TestHarness.getInstance().finishTestRun()}
- * if there are no more tests to be run.</li>
+ * OR call {@link #finishTestRun() TestHarness.getInstance().finishTestRun()} if
+ * there are no more tests to be run.</li>
  * </ol>
  *
  * <h2>How it works</h2>
@@ -80,7 +87,9 @@ import javafx.stage.Stage;
  * Each controller should contain method stubs that simulate what would occur if
  * the application were actually running and had user interaction. Instead of
  * getting data from the user, we just hard code what we need and pass it as
- * parameters as needed. This is just for testing.</p>
+ * parameters as needed. This is just for testing. Unlike normal classes, this
+ * code shouldn't go into the constructor. Instead, it goes into the initialize
+ * method.</p>
  *
  * <p>
  * The controllers need to call the appropriate tests, defined in this class.
@@ -90,6 +99,10 @@ import javafx.stage.Stage;
  * TestHarness.getInstance().changeScene. That controller is then loaded and
  * run. The finishTestRun method is called when the last test is completed to
  * print the pass/fail statistics and quit the application.</p>
+ *
+ * <p>
+ * See {@link analytics.FoodLogViewController FoodLogViewController} for an
+ * example of how this might work.</p>
  *
  * <p>
  * The tests are written as single methods in this class, similar to how you
@@ -154,6 +167,7 @@ public class TestHarness {
         logger.log(Level.INFO, String.format("TESTS COMPLETE. Total tests: %d [%d passed, %d failed",
                 testsPassed + testsFailed, testsPassed, testsFailed));
         primaryStage.close();
+        Platform.exit();
     }
 
     /**
@@ -248,7 +262,6 @@ public class TestHarness {
                 "Starting application and tests.");
         testSetUp();
         Application.launch(TestLauncher.class, args);
-
     }
 
     /**
