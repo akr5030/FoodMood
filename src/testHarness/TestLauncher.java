@@ -1,5 +1,7 @@
 package testHarness;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,6 +24,16 @@ public class TestLauncher extends Application {
 
         TestHarness.getInstance().setStage(primaryStage);
         TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
+    }
+    
+    @Override
+    public void stop() {
+        try {
+            TestHarness.getInstance().testTearDown();
+            super.stop();
+        } catch (Exception ex) {
+            Logger.getLogger(TestLauncher.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
