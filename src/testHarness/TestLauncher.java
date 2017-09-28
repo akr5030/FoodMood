@@ -1,50 +1,27 @@
 package testHarness;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author redjen
+ * Simple launcher class used to start the application for testing
+ * 
+ * This class does three things:
+ * 
+ * 1. Launch the application.
+ * 2. Pass the stage to TestHarness, which handles changing views.
+ * 3. Pass the view associated with the first test to TestHarness, which then
+ *    loads the view and its controller.
+ * 
+ * @author jsm158
  */
 public class TestLauncher extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
 
-        Parent root;
-        
-        try {
-            root = FXMLLoader.load(getClass().getResource("/analytics/FoodLogView.fxml"));
-            Scene scene = new Scene(root, 300, 250);
-            
-            primaryStage.setTitle("FoodMood");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(TestLauncher.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        TestHarness.getInstance().setStage(primaryStage);
+        TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    private static void setUp() {
-        
-    }
-    
-    private static void tearDown() {
-        
-    }
-    
 }
