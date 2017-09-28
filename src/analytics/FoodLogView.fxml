@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analytics.FoodLogViewController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="analytics.FoodLogViewController">
+   <children>
+      <DatePicker fx:id="startDatePicker" layoutX="6.0" layoutY="10.0" promptText="start date" />
+      <DatePicker fx:id="endDatePicker" layoutX="392.0" layoutY="10.0" promptText="end date" />
+      <TreeView fx:id="treeView" layoutX="3.0" layoutY="47.0" prefHeight="337.0" prefWidth="587.0" />
+   </children>
 </AnchorPane>

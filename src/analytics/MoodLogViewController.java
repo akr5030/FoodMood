@@ -2,15 +2,20 @@ package analytics;
 
 import foodmood.MoodRecord;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TreeView;
+import testHarness.TestHarness;
 
 /**
  * FXML Controller class for the mood log view.
@@ -31,7 +36,7 @@ public class MoodLogViewController implements Initializable {
      * ObservableList for the mood records to display
      */
     @FXML
-    private ObservableList<MoodRecord> moodList;
+    private ArrayList<MoodRecord> moodList;
 
     /**
      * The line chart for displaying moods
@@ -57,6 +62,9 @@ public class MoodLogViewController implements Initializable {
     @FXML
     private DatePicker endDatePicker;
 
+    @FXML
+    private ComboBox moodComboBox;
+
     /**
      * Constructs a new MoodLogViewController
      */
@@ -71,7 +79,9 @@ public class MoodLogViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Logger.getLogger(MoodLogViewController.class.getName()).log(Level.INFO, "Loaded MoodLogViewController");
+        TestHarness.getInstance().testMoodLogViewControllerGetMoodRecords();
+        TestHarness.getInstance().finishTestRun();
     }
 
     /**
