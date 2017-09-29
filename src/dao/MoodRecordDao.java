@@ -2,6 +2,7 @@ package dao;
 
 import foodmood.MoodRecord;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class MoodRecordDao {
      * @param accountId the ID of the account associated with the records
      * @return the list of mood records
      */
-    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate, int accountId) {
+    public ArrayList<MoodRecord> getMoodRecords(LocalDate startDate, LocalDate endDate, int accountId) {
         return null;
     }
 
@@ -40,7 +41,7 @@ public class MoodRecordDao {
      * @param endDate the end of the date range (inclusive)
      * @return the list of mood records
      */
-    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate) {
+    public ArrayList<MoodRecord> getMoodRecords(LocalDate startDate, LocalDate endDate) {
         return null;
     }
 

@@ -1,13 +1,16 @@
 package analytics;
 
+import dao.DaoException;
 import foodmood.MoodRecord;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,9 +82,35 @@ public class MoodLogViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO update with real dates
         Logger.getLogger(MoodLogViewController.class.getName()).log(Level.INFO, "Loaded MoodLogViewController");
-        TestHarness.getInstance().testMoodLogViewControllerGetMoodRecords();
+
+        updateView();
+        TestHarness.getInstance().testMoodLogViewControllerGetMoodRecords(moodList);
+
+        deleteRecord();
         TestHarness.getInstance().finishTestRun();
+    }
+
+    /**
+     * Updates the view with the start and end dates selected by the user
+     */
+    private void updateView() {
+        // TODO replace with real dates
+        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
+        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
+        getRecords(startDate, endDate);
+    }
+
+    /**
+     * Deletes the selected record
+     */
+    private void deleteRecord() {
+        // TODO replace with real dates
+        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
+        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
+        getRecords(startDate, endDate);
+        updateView();
     }
 
     /**
@@ -91,7 +120,7 @@ public class MoodLogViewController implements Initializable {
      */
     @FXML
     private void handleUpdateViewButton(ActionEvent e) {
-
+        updateView();
     }
 
     /**
@@ -101,7 +130,7 @@ public class MoodLogViewController implements Initializable {
      */
     @FXML
     private void handleDeleteRecordButton(ActionEvent e) {
-        // TODO
+        deleteRecord();
     }
 
     /**
@@ -114,8 +143,8 @@ public class MoodLogViewController implements Initializable {
      * @param startDate the start date
      * @param endDate the end date
      */
-    private void getRecords(Date startDate, Date endDate) {
-
+    private void getRecords(LocalDate startDate, LocalDate endDate) {
+        moodList = new ArrayList<>();
     }
 
 }

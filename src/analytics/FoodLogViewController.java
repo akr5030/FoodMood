@@ -73,14 +73,16 @@ public class FoodLogViewController implements Initializable {
         try {
 
             getRecords(LocalDate.of(2017, Month.SEPTEMBER, 1), LocalDate.of(2017, Month.SEPTEMBER, 7));
+
             // Test getting the list of food records entered by the user
             // These records should have already been created in a previous step.
-            handleChangeDatesButton(new ActionEvent());
-            TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords();
+            updateView();
+            TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords(foods);
 
-            // Test deleting a food record
-            handleDeleteRecordButton(new ActionEvent());
-            TestHarness.getInstance().testFoodLogViewControllerDeleteFood();
+            // Test deleting a food record    
+            deleteRecord();
+            // TODO replace 1 with the actual item deleted
+            TestHarness.getInstance().testFoodLogViewControllerDeleteFood(foods, 1);
 
             // Move on to the next test
             TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
@@ -90,27 +92,39 @@ public class FoodLogViewController implements Initializable {
         }
     }
 
-    public void updateView()  {
+    /**
+     * Updates the view using the start and end dates set in the view by the
+     * user
+     */
+    public void updateView() {
         try {
+            // TODO replace with real dates
             LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
             LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
-            
+
             getRecords(startDate, endDate);
         } catch (DaoException ex) {
             Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    /**
+     * Deletes the selected record
+     */
     public void deleteRecord() {
+        
         if (!foods.isEmpty()) {
 
             try {
                 FoodRecordDao dao = new FoodRecordDao();
                 dao.saveFoodRecords(foods);
+                updateView();
             } catch (DaoException ex) {
                 Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+        updateView();
     }
 
     /**

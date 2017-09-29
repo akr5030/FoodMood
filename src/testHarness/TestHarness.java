@@ -1,6 +1,12 @@
 package testHarness;
 
+import foodmood.Food;
+import foodmood.FoodRecord;
+import foodmood.MoodRecord;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -133,28 +139,112 @@ public class TestHarness {
         testsFailed = 0;
     }
 
-    public boolean testFoodLogViewControllerGetFoodRecords() {
+    /**
+     * Test for FoodLogViewController that confirms the list of food records
+     * contains only the expected ones.
+     *
+     * @param records the list of records to test
+     * @return test result
+     */
+    public boolean testFoodLogViewControllerGetFoodRecords(List<FoodRecord> records) {
         logTestStart("testFoodLogViewControllerGetFoodRecords");
-        // TODO write test
 
-        logTestResult("testFoodLogViewControllerGetFoodRecords", false);
-        return false;
+        // create an array of IDs that should be in the list
+        // TODO create array of IDs using the food entry tests
+        int[] expectedIDs = {};
+
+        // test the size of the records list and fail if it's incorrect
+        if (records.size() != expectedIDs.length) {
+            logTestResult("testFoodLogViewControllerGetFoodRecords", false);
+            return false;
+
+        } else {
+
+            // check that each record is in the list            
+            for (int expectedID : expectedIDs) {
+                boolean found = false;
+
+                for (FoodRecord record : records) {
+                    if (record.getId() == expectedID) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    logTestResult("testFoodLogViewControllerGetFoodRecords", false);
+                    return false;
+                }
+            }
+        }
+
+        logTestResult("testFoodLogViewControllerGetFoodRecords", true);
+        return true;
     }
 
-    public boolean testFoodLogViewControllerDeleteFood() {
+    /**
+     * Test for FoodLogViewController that confirms that the list of records
+     * does not contain the specified deleted record.
+     *
+     * @param records the list of records to test
+     * @param deletedId the ID for the record that was deleted
+     * @return the test result
+     */
+    public boolean testFoodLogViewControllerDeleteFood(List<FoodRecord> records, int deletedId) {
         logTestStart("testFoodLogViewControllerDeleteFood");
-        // TODO write test
 
-        logTestResult("testFoodLogViewControllerDeleteFood", false);
-        return false;
+        // check that no record contains the deleted ID
+        for (FoodRecord record : records) {
+            if (record.getId() == deletedId) {
+                logTestResult("testFoodLogViewControllerDeleteFood", false);
+                return false;
+            }
+        }
+
+        logTestResult("testFoodLogViewControllerDeleteFood", true);
+        return true;
     }
 
-    public boolean testMoodLogViewControllerGetMoodRecords() {
+    /**
+     * Test for MoodLogViewController that confirms the list of m mood records
+     * contains only the expected ones.
+     *
+     * @param records the list of records to test
+     * @return test result
+     */
+    public boolean testMoodLogViewControllerGetMoodRecords(List<MoodRecord> records) {
         logTestStart("testMoodLogViewControllerGetMoodRecords");
-        // TODO write test
+                // create an array of IDs that should be in the list
+        // TODO create array of IDs using the food entry tests
+        int[] expectedIDs = {};
 
-        logTestResult("testMoodLogViewControllerGetMoodRecords", false);
-        return false;
+        // test the size of the records list and fail if it's incorrect
+        if (records.size() != expectedIDs.length) {
+            logTestResult("testFoodLogViewControllerGetFoodRecords", false);
+            return false;
+
+        } else {
+
+            // check that each record is in the list            
+            for (int expectedID : expectedIDs) {
+                boolean found = false;
+
+                for (MoodRecord record : records) {
+                    if (record.getId() == expectedID) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    logTestResult("testMoodLogViewControllerGetFoodRecords", false);
+                    return false;
+                }
+            }
+        }
+
+        logTestResult("testMoodLogViewControllerGetMoodRecords", true);
+        return true;
     }
 
     /**

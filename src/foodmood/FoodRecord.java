@@ -24,7 +24,7 @@ public class FoodRecord {
     * @param date the date the food was logged
     * @param food the food the user logged
     */ 
-    public FoodRecord(int id, int accountId, Date date, String food){
+    public FoodRecord(int id, int accountId){
         this.id = id;
         this.accountId = accountId;
         this.date = date;
