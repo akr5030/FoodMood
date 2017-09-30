@@ -1,5 +1,13 @@
 package foodmood;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.System.out;
+
+
 /**
  * Food class
  *
@@ -82,4 +90,43 @@ public class Food {
     public void setFoodGroup(String foodGroup) {
         this.foodGroup = foodGroup;
     }
+    
+    /**
+     * Gives the user the option to add a food.
+     */
+    
+    public void addFoods(){
+        try {
+            FileWriter fw = new FileWriter("food.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            
+            pw.println("Food Name: Pizza Serving Size: 1 Food Group: Grain Veggie Milk");
+            pw.println("Food Name: Taco Serving Size: 1 Food Group: Meat");
+            pw.close();
+        } catch (IOException ex) {
+            out.println("Error");
+        }
+        
+    }
+    
+    /**
+     * Read the file.
+     */
+    
+    public void readFoods(){
+        try {
+            FileReader fr = new FileReader("food.txt");
+            BufferedReader br = new BufferedReader(fr);
+            
+            String str;
+            while((str = br.readLine()) != null){
+                out.println(str + "\n");
+            }
+            
+            br.close();
+            
+        } catch (IOException e){
+            out.println("File not found");
+        }
+    }   
 }
