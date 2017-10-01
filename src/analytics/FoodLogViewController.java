@@ -2,6 +2,7 @@ package analytics;
 
 import dao.DaoException;
 import dao.FoodRecordDao;
+import foodmood.FoodController;
 import foodmood.FoodRecord;
 import java.net.URL;
 import java.time.LocalDate;
@@ -148,6 +149,10 @@ public class FoodLogViewController implements Initializable {
      */
     private void getRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
         foods = new ArrayList<>();
+        
+//        FoodController fc = new FoodController();
+        
+        
     }
 
 }
