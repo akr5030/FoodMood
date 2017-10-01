@@ -33,7 +33,7 @@ private static final String FILE_HEADER = "id,Name,Serving_Size,Food_Group";
      * Gives the user the option to add a food.
      * @param fileName
      */
-    public void addFoods(String fileName){
+    public void addFoods(){
         
         Food food1 = new Food(1,"Pizza", 1, "Grain, Veggie, Milk");
         Food food2 = new Food(2,"Tacos", 1, "Meat");
