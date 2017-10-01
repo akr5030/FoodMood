@@ -29,7 +29,7 @@ public class TestLauncher extends Application {
 
         Platform.setImplicitExit(true);
         TestHarness.getInstance().setStage(primaryStage);
-        TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
+        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
     }
 
     /**
