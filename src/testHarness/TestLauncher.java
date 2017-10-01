@@ -29,7 +29,7 @@ public class TestLauncher extends Application {
 
         Platform.setImplicitExit(true);
         TestHarness.getInstance().setStage(primaryStage);
-        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
+        TestHarness.getInstance().changeScene("/foodmood/FoodView.fxml");
     }
 
     /**
@@ -42,6 +42,7 @@ public class TestLauncher extends Application {
     @Override
     public void stop() {
         try {
+            TestHarness.testTearDown();
             System.exit(0);
 
         } catch (Exception ex) {
