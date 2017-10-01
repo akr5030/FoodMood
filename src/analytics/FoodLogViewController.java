@@ -76,26 +76,26 @@ public class FoodLogViewController implements Initializable {
             getRecords(LocalDate.of(2017, Month.SEPTEMBER, 1), LocalDate.of(2017, Month.SEPTEMBER, 7));
             // Test getting the list of food records entered by the user
             // These records should have already been created in a previous step.
-            handleChangeDatesButton(new ActionEvent());
+            updateView();
             TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords();
 
             // Test deleting a food record
-            handleDeleteRecordButton(new ActionEvent());
+            deleteRecord();
             TestHarness.getInstance().testFoodLogViewControllerDeleteFood();
 
             // Move on to the next test
-            TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
+            TestHarness.getInstance().finishTestRun();
 
         } catch (DaoException ex) {
             Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void updateView()  {
+    public void updateView() {
         try {
             LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
             LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
-            
+
             getRecords(startDate, endDate);
         } catch (DaoException ex) {
             Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,11 +148,8 @@ public class FoodLogViewController implements Initializable {
      * @param endDate the end date
      */
     private void getRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
-        foods = new ArrayList<>();
-        
-//        FoodController fc = new FoodController();
-        
-        
+        FoodRecordDao dao = new FoodRecordDao();
+        foods = dao.getFoodRecords(LocalDate.now(), LocalDate.now());
     }
 
 }

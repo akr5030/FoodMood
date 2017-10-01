@@ -189,9 +189,39 @@ public class TestHarness {
         return success;
     }
 
+    public boolean testFoodRecordControllerAdd() {
+        logTestStart("testFoodRecordControllerAdd");
+        boolean success = true;
+        Scanner scanner = null;
+
+        if (Files.exists(Paths.get("data", "foodrecord.csv"))) {
+            try {
+                String line = "";
+                scanner = new Scanner(Paths.get("data", "foodrecord.csv"));
+
+                line = scanner.nextLine();
+                if (!line.equals("1,1,2017-01-01,taco")) {
+                    success = false;
+                    logTestResult("testFoodRecordControllerAdd", success);
+                    return success;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (scanner != null) {
+                    scanner.close();
+                }
+            }
+        } else {
+            success = false;
+        }
+        logTestResult("testFoodRecordControllerAdd", success);
+        return success;
+        
+    }
+
     public boolean testFoodLogViewControllerGetFoodRecords() {
         logTestStart("testFoodLogViewControllerGetFoodRecords");
-        // TODO write test
 
         logTestResult("testFoodLogViewControllerGetFoodRecords", false);
         return false;
@@ -337,7 +367,7 @@ public class TestHarness {
      * @param testName the name of the test
      */
     private void logTestStart(String testName) {
-        logger.log(Level.INFO, String.format("%nStarting %s test", testName));
+        System.out.println(String.format("%nStarting %s test", testName));
     }
 
     /**
@@ -350,14 +380,14 @@ public class TestHarness {
      * @param passed true if the test passed, otherwise false
      */
     private void logTestResult(String testName, boolean passed) {
-        String messageFormat = "Result for %s: %b";
+        String messageFormat = "Result for %s: %s%n%n";
 
         if (passed) {
             testsPassed++;
-            logger.log(Level.INFO, String.format(messageFormat, testName, passed));
+            System.out.println(String.format(messageFormat, testName, "pass"));
         } else {
             testsFailed++;
-            logger.log(Level.SEVERE, String.format(messageFormat, testName, passed));
+            System.out.println(String.format(messageFormat, testName, "fail"));
         }
     }
 
