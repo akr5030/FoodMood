@@ -1,5 +1,8 @@
 package foodmood;
 
+
+
+
 /**
  * Food class
  *
@@ -82,4 +85,5 @@ public class Food {
     public void setFoodGroup(String foodGroup) {
         this.foodGroup = foodGroup;
     }
+    
 }
