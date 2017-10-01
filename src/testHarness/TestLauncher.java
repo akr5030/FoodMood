@@ -42,7 +42,6 @@ public class TestLauncher extends Application {
     @Override
     public void stop() {
         try {
-            TestHarness.testTearDown();
             System.exit(0);
 
         } catch (Exception ex) {

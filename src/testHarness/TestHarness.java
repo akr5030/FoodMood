@@ -1,6 +1,10 @@
 package testHarness;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -133,6 +137,20 @@ public class TestHarness {
         testsFailed = 0;
     }
 
+    public boolean testFoodController() {
+        logTestStart("testFoodController");
+
+        File file = new File("food.csv");
+        if (!file.exists()) {
+            logTestResult("testFoodLogViewControllerGetFoodRecords", false);
+        }
+
+        Scanner scanner = new Scanner("food.csv");
+        scanner.nextLine();
+
+        return true;
+    }
+
     public boolean testFoodLogViewControllerGetFoodRecords() {
         logTestStart("testFoodLogViewControllerGetFoodRecords");
         // TODO write test
@@ -166,6 +184,7 @@ public class TestHarness {
     public void finishTestRun() {
         logger.log(Level.INFO, String.format("TESTS COMPLETE. Total tests: %d [%d passed, %d failed",
                 testsPassed + testsFailed, testsPassed, testsFailed));
+        testTearDown();
         primaryStage.close();
         Platform.exit();
     }
@@ -175,15 +194,27 @@ public class TestHarness {
      * creation
      */
     public static void testSetUp() {
-
+        try {
+            // make data directory in which test files will be created
+            Files.createDirectories(Paths.get("data"));
+        } catch (IOException ex) {
+            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
      * Performs tasks that need to be done after all tests have completed, such
      * as deleting test data
      */
-    public void testTearDown() {
-
+    public static void testTearDown() {
+        try {
+            // delete data
+            Files.deleteIfExists(Paths.get("data/food.csv"));
+            Files.deleteIfExists(Paths.get("data"));
+        } catch (IOException ex) {
+            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, 
+                    "Couldn't delete a data file", ex);
+        }
     }
 
     /**
