@@ -43,8 +43,7 @@ public class FoodController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         addFoods();
         TestHarness.getInstance().testFoodController();
-//        TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
-        TestHarness.getInstance().finishTestRun();
+        TestHarness.getInstance().changeScene("/foodmood/FoodRecordView.fxml");
     }
 
     /**
