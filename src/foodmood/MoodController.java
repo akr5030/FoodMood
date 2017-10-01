@@ -33,6 +33,8 @@ public class MoodController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        addMood();
+        readMood();
     }
     
     // Add a mood to the 'database'
