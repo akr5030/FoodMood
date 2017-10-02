@@ -79,7 +79,7 @@ public class MoodLogViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Logger.getLogger(MoodLogViewController.class.getName()).log(Level.INFO, "Loaded MoodLogViewController");
-        TestHarness.getInstance().testMoodLogViewControllerGetMoodRecords();
+        TestHarness.getInstance().testMoodControllerAdd();
         TestHarness.getInstance().finishTestRun();
     }
 

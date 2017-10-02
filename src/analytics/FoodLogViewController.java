@@ -79,7 +79,7 @@ public class FoodLogViewController implements Initializable {
         deleteRecord();
         TestHarness.getInstance().testFoodLogViewControllerDeleteFood(foods);
         // Move on to the next test
-        TestHarness.getInstance().finishTestRun();
+        TestHarness.getInstance().changeScene("/foodmood/Mood.fxml");
     }
 
     public void updateView() {
