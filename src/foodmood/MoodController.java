@@ -38,7 +38,7 @@ public class MoodController implements Initializable {
         addMood();
         TestHarness.getInstance().testMoodControllerAdd();
         readMood();
-        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxm");
+        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
     }
 
     // Add a mood to the 'database'
