@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.Account;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +29,7 @@ public class AccountDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> getAllAccounts() throws DaoException {
+    public ArrayList<Account> getAllAccounts() throws DaoException {
         return null;
     }
 
@@ -42,7 +43,7 @@ public class AccountDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public Object getAccount(int accountId) throws DaoException {
+    public Account getAccount(int accountId) throws DaoException {
         return null;
     }
 
@@ -54,7 +55,7 @@ public class AccountDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public void saveAccount(Object account) throws DaoException {
+    public void saveAccount(Account account) throws DaoException {
 
     }
 
