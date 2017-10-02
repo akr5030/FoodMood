@@ -1,6 +1,9 @@
 package testHarness;
 
 import foodmood.FoodRecord;
+import foodmood.Mood;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -245,12 +248,58 @@ public class TestHarness {
         return success;
     }
 
-    public boolean testMoodLogViewControllerGetMoodRecords() {
-        logTestStart("testMoodLogViewControllerGetMoodRecords");
-        // TODO write test
+    public boolean testMoodControllerAdd() {
+        logTestStart("testMoodControllerAdd");
 
-        logTestResult("testMoodLogViewControllerGetMoodRecords", false);
-        return false;
+        boolean success = true;
+        File file = new File("data/Moods.csv");
+        Scanner scanner = null;
+        String line = "";
+
+        try {
+            scanner = new Scanner(file);
+
+            line = scanner.nextLine();
+            if (!line.equals("Id,MoodName,")) {
+                success = false;
+                logTestResult("testMoodControllerAdd", success);
+                return success;
+            }
+
+            line = scanner.nextLine();
+            if (!line.equals("1,Happy")) {
+                success = false;
+                logTestResult("testMoodControllerAdd", success);
+                return success;
+            }
+
+            line = scanner.nextLine();
+            if (!line.equals("1,Sad")) {
+                success = false;
+                logTestResult("testMoodControllerAdd", success);
+                return success;
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        logTestResult("testMoodControllerAdd", success);
+        return success;
+    }
+
+    public boolean testMoodControllerRead(List<Mood> records) {
+        logTestStart("testMoodControllerRead");
+        boolean success = false;
+        
+        if (records.size() == 2 && records.get(0).getId() == 1) {
+
+            success = true;
+            logTestResult("testMoodControllerRead", success);
+            return success;
+        }
+
+        logTestResult("testMoodControllerRead", success);
+        return success;
     }
 
     /**
@@ -289,6 +338,7 @@ public class TestHarness {
             // delete data
             Files.deleteIfExists(Paths.get("data/food.csv"));
             Files.deleteIfExists(Paths.get("data/foodrecord.csv"));
+            Files.deleteIfExists(Paths.get("data/Moods.csv"));
             Files.deleteIfExists(Paths.get("data"));
         } catch (IOException ex) {
             Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE,
