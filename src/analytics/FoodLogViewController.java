@@ -69,48 +69,32 @@ public class FoodLogViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        Logger.getLogger(FoodLogViewController.class.getName()).log(Level.INFO, "Loaded FoodLogViewController");
+        System.out.println("Loaded FoodLogViewController");
 
-        try {
-
-            getRecords(LocalDate.of(2017, Month.SEPTEMBER, 1), LocalDate.of(2017, Month.SEPTEMBER, 7));
-            // Test getting the list of food records entered by the user
-            // These records should have already been created in a previous step.
-            updateView();
-            TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords();
-
-            // Test deleting a food record
-            deleteRecord();
-            TestHarness.getInstance().testFoodLogViewControllerDeleteFood();
-
-            // Move on to the next test
-            TestHarness.getInstance().finishTestRun();
-
-        } catch (DaoException ex) {
-            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Test getting the list of food records entered by the user
+        // These records should have already been created in a previous step.
+        updateView();
+        TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords(foods);
+        // Test deleting a food record
+        deleteRecord();
+        TestHarness.getInstance().testFoodLogViewControllerDeleteFood(foods);
+        // Move on to the next test
+        TestHarness.getInstance().finishTestRun();
     }
 
     public void updateView() {
-        try {
-            LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
-            LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
-
-            getRecords(startDate, endDate);
-        } catch (DaoException ex) {
-            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
+        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
+        getRecords(startDate, endDate);
     }
 
     public void deleteRecord() {
-        if (!foods.isEmpty()) {
-
-            try {
-                FoodRecordDao dao = new FoodRecordDao();
-                dao.saveFoodRecords(foods);
-            } catch (DaoException ex) {
-                Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        foods.clear();
+        try {
+            FoodRecordDao dao = new FoodRecordDao();
+            dao.saveFoodRecords(foods);
+        } catch (DaoException ex) {
+            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -147,9 +131,14 @@ public class FoodLogViewController implements Initializable {
      * @param startDate the start date
      * @param endDate the end date
      */
-    private void getRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
+    private void getRecords(LocalDate startDate, LocalDate endDate) {
+        foods = new ArrayList<>();
         FoodRecordDao dao = new FoodRecordDao();
-        foods = dao.getFoodRecords(LocalDate.now(), LocalDate.now());
+        try {
+            foods = dao.getFoodRecords(LocalDate.now(), LocalDate.now());
+        } catch (DaoException ex) {
+            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

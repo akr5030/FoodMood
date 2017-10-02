@@ -45,19 +45,9 @@ public class FoodRecordDao {
      */
     public ArrayList<FoodRecord> getFoodRecords(LocalDate startDate, LocalDate endDate, int accountId) throws DaoException {
 
-        Scanner scanner = null;
+        FoodRecord record = new FoodRecord(1, 1, LocalDate.now(), "test");
         ArrayList<FoodRecord> records = new ArrayList<>();
-
-        if (Files.exists(Paths.get("data", DATA_FILE))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] attrs = line.split(",");
-                FoodRecord f = new FoodRecord(Integer.parseInt(attrs[0]), Integer.parseInt(attrs[1]), LocalDate.parse(attrs[2]), attrs[3]);
-                records.add(f);
-                line = scanner.nextLine();
-            }
-
-        }
+        records.add(record);
 
         return records;
     }
@@ -74,7 +64,7 @@ public class FoodRecordDao {
      */
     public ArrayList<FoodRecord> getFoodRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
         // for testing
-        return getFoodRecords(startDate, endDate);
+        return getFoodRecords(startDate, endDate, 0);
     }
 
     public void saveFoodRecord(FoodRecord foodRecord) throws DaoException {
@@ -82,6 +72,7 @@ public class FoodRecordDao {
         foods.add(foodRecord);
         saveFoodRecords(foods);
     }
+
     /**
      * Saves the specified food record
      *
@@ -90,11 +81,9 @@ public class FoodRecordDao {
      * or executing the query
      */
     private void saveFoodRecord(FoodRecord foodRecord, PrintWriter pw) throws DaoException {
-        pw.printf("%d,%d,%s,%s%n", foodRecord.getId(), foodRecord.getAccountId(), 
+        pw.printf("%d,%d,%s,%s%n", foodRecord.getId(), foodRecord.getAccountId(),
                 foodRecord.getDate().toString(), foodRecord.getFood());
     }
-    
-    
 
     /**
      * Saves the specified food records
@@ -106,7 +95,7 @@ public class FoodRecordDao {
     public void saveFoodRecords(List<FoodRecord> foodRecords) throws DaoException {
         PrintWriter pw = null;
         File file = new File(DATA_FILE);
-        
+
         try {
 
             pw = new PrintWriter(file);

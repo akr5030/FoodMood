@@ -1,9 +1,10 @@
 package testHarness;
 
-import java.io.File;
+import foodmood.FoodRecord;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -217,22 +218,31 @@ public class TestHarness {
         }
         logTestResult("testFoodRecordControllerAdd", success);
         return success;
-        
+
     }
 
-    public boolean testFoodLogViewControllerGetFoodRecords() {
+    public boolean testFoodLogViewControllerGetFoodRecords(List<FoodRecord> records) {
         logTestStart("testFoodLogViewControllerGetFoodRecords");
+        boolean success = false;
 
-        logTestResult("testFoodLogViewControllerGetFoodRecords", false);
-        return false;
+        if (records.size() == 1 && records.get(0).getId() == 1) {
+            success = true;
+        }
+
+        logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+        return success;
     }
 
-    public boolean testFoodLogViewControllerDeleteFood() {
+    public boolean testFoodLogViewControllerDeleteFood(List<FoodRecord> records) {
         logTestStart("testFoodLogViewControllerDeleteFood");
-        // TODO write test
+        boolean success = false;
 
-        logTestResult("testFoodLogViewControllerDeleteFood", false);
-        return false;
+        if (records.isEmpty()) {
+            success = true;
+        }
+
+        logTestResult("testFoodLogViewControllerDeleteFood", success);
+        return success;
     }
 
     public boolean testMoodLogViewControllerGetMoodRecords() {
@@ -278,6 +288,7 @@ public class TestHarness {
         try {
             // delete data
             Files.deleteIfExists(Paths.get("data/food.csv"));
+            Files.deleteIfExists(Paths.get("data/foodrecord.csv"));
             Files.deleteIfExists(Paths.get("data"));
         } catch (IOException ex) {
             Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE,
