@@ -1,6 +1,11 @@
 package testHarness;
 
+import foodmood.FoodRecord;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -129,24 +134,115 @@ public class TestHarness {
     private final static Logger logger = Logger.getLogger("TestHarness");
 
     private TestHarness() {
+        logger.setLevel(Level.INFO);
         testsPassed = 0;
         testsFailed = 0;
     }
 
-    public boolean testFoodLogViewControllerGetFoodRecords() {
-        logTestStart("testFoodLogViewControllerGetFoodRecords");
-        // TODO write test
+    /**
+     * Tests the food controller to make sure it writes the file as intended
+     *
+     * @return test result
+     */
+    public boolean testFoodController() {
+        boolean success = true;
+        Scanner scanner = null;
+        logTestStart("testFoodController");
 
-        logTestResult("testFoodLogViewControllerGetFoodRecords", false);
-        return false;
+        if (Files.exists(Paths.get("data", "food.csv"))) {
+            try {
+                String line = "";
+                scanner = new Scanner(Paths.get("data", "food.csv"));
+
+                line = scanner.nextLine();
+                if (!line.equals("id,Name,Serving_Size,Food_Group")) {
+                    success = false;
+                    logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+                    return success;
+                }
+
+                line = scanner.nextLine();
+                if (!line.equals("1,Pizza,1,Grain, Veggie, Milk")) {
+                    success = false;
+                    logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+                    return success;
+                }
+
+                line = scanner.nextLine();
+                if (!line.equals("2,Tacos,1,Meat")) {
+                    success = false;
+                    logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+                    return success;
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (scanner != null) {
+                    scanner.close();
+                }
+            }
+        } else {
+            success = false;
+        }
+
+        logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+        return success;
     }
 
-    public boolean testFoodLogViewControllerDeleteFood() {
-        logTestStart("testFoodLogViewControllerDeleteFood");
-        // TODO write test
+    public boolean testFoodRecordControllerAdd() {
+        logTestStart("testFoodRecordControllerAdd");
+        boolean success = true;
+        Scanner scanner = null;
 
-        logTestResult("testFoodLogViewControllerDeleteFood", false);
-        return false;
+        if (Files.exists(Paths.get("data", "foodrecord.csv"))) {
+            try {
+                String line = "";
+                scanner = new Scanner(Paths.get("data", "foodrecord.csv"));
+
+                line = scanner.nextLine();
+                if (!line.equals("1,1,2017-01-01,taco")) {
+                    success = false;
+                    logTestResult("testFoodRecordControllerAdd", success);
+                    return success;
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (scanner != null) {
+                    scanner.close();
+                }
+            }
+        } else {
+            success = false;
+        }
+        logTestResult("testFoodRecordControllerAdd", success);
+        return success;
+
+    }
+
+    public boolean testFoodLogViewControllerGetFoodRecords(List<FoodRecord> records) {
+        logTestStart("testFoodLogViewControllerGetFoodRecords");
+        boolean success = false;
+
+        if (records.size() == 1 && records.get(0).getId() == 1) {
+            success = true;
+        }
+
+        logTestResult("testFoodLogViewControllerGetFoodRecords", success);
+        return success;
+    }
+
+    public boolean testFoodLogViewControllerDeleteFood(List<FoodRecord> records) {
+        logTestStart("testFoodLogViewControllerDeleteFood");
+        boolean success = false;
+
+        if (records.isEmpty()) {
+            success = true;
+        }
+
+        logTestResult("testFoodLogViewControllerDeleteFood", success);
+        return success;
     }
 
     public boolean testMoodLogViewControllerGetMoodRecords() {
@@ -166,6 +262,7 @@ public class TestHarness {
     public void finishTestRun() {
         logger.log(Level.INFO, String.format("TESTS COMPLETE. Total tests: %d [%d passed, %d failed",
                 testsPassed + testsFailed, testsPassed, testsFailed));
+        testTearDown();
         primaryStage.close();
         Platform.exit();
     }
@@ -175,15 +272,28 @@ public class TestHarness {
      * creation
      */
     public static void testSetUp() {
-
+        try {
+            // make data directory in which test files will be created
+            Files.createDirectories(Paths.get("data"));
+        } catch (IOException ex) {
+            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
      * Performs tasks that need to be done after all tests have completed, such
      * as deleting test data
      */
-    public void testTearDown() {
-
+    public static void testTearDown() {
+        try {
+            // delete data
+            Files.deleteIfExists(Paths.get("data/food.csv"));
+            Files.deleteIfExists(Paths.get("data/foodrecord.csv"));
+            Files.deleteIfExists(Paths.get("data"));
+        } catch (IOException ex) {
+            Logger.getLogger(TestHarness.class.getName()).log(Level.SEVERE,
+                    "Couldn't delete a data file", ex);
+        }
     }
 
     /**
@@ -217,8 +327,6 @@ public class TestHarness {
         }
 
         try {
-            Logger.getLogger(TestHarness.class.getName()).log(Level.INFO, document);
-
             root = FXMLLoader.load(getClass().getResource(document));
             scene = new Scene(root, 800, 600);
             primaryStage.setTitle(document);
@@ -270,7 +378,7 @@ public class TestHarness {
      * @param testName the name of the test
      */
     private void logTestStart(String testName) {
-        logger.log(Level.INFO, String.format("%nStarting %s test", testName));
+        System.out.println(String.format("%nStarting %s test", testName));
     }
 
     /**
@@ -283,14 +391,14 @@ public class TestHarness {
      * @param passed true if the test passed, otherwise false
      */
     private void logTestResult(String testName, boolean passed) {
-        String messageFormat = "Result for %s: %b";
+        String messageFormat = "Result for %s: %s%n%n";
 
         if (passed) {
             testsPassed++;
-            logger.log(Level.INFO, String.format(messageFormat, testName, passed));
+            System.out.println(String.format(messageFormat, testName, "pass"));
         } else {
             testsFailed++;
-            logger.log(Level.SEVERE, String.format(messageFormat, testName, passed));
+            System.out.println(String.format(messageFormat, testName, "fail"));
         }
     }
 

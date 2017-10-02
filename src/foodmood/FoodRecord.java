@@ -1,5 +1,6 @@
 package foodmood;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
 public class FoodRecord {
     private int id;
     private int accountId;
-    private Date date;
+    private LocalDate date;
     private String food;
     
     
@@ -24,7 +25,7 @@ public class FoodRecord {
     * @param date the date the food was logged
     * @param food the food the user logged
     */ 
-    public FoodRecord(int id, int accountId, Date date, String food){
+    public FoodRecord(int id, int accountId, LocalDate date, String food){
         this.id = id;
         this.accountId = accountId;
         this.date = date;
@@ -59,11 +60,11 @@ public class FoodRecord {
     * Returns the date
     * @return the date a user logged a food
     */ 
-    public Date getDate(){
+    public LocalDate getDate(){
         return date;
     }
     
-    public void setDate(Date date){
+    public void setDate(LocalDate date){
         this.date=date;
     }
     
