@@ -1,7 +1,5 @@
 package foodmood;
 
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Slider;
 
 /**
  * Mood class
@@ -48,7 +46,7 @@ public class Mood {
     
     public void setMoodName(String moodName){
         this.moodName = moodName;
-    }
+    }   
     
 }
 
