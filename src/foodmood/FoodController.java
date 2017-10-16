@@ -41,9 +41,9 @@ public class FoodController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        addFoods();
-        TestHarness.getInstance().testFoodController();
-        TestHarness.getInstance().changeScene("/foodmood/FoodRecordView.fxml");
+//        addFoods();
+//        TestHarness.getInstance().testFoodController();
+//        TestHarness.getInstance().changeScene("/foodmood/FoodRecordView.fxml");
     }
 
     /**
@@ -56,45 +56,45 @@ public class FoodController implements Initializable {
      */
     public void addFoods() {
 
-        Food food1 = new Food(1, "Pizza", 1, "Grain, Veggie, Milk");
-        Food food2 = new Food(2, "Tacos", 1, "Meat");
-
-        List<Food> foods = new ArrayList<Food>();
-        foods.add(food1);
-        foods.add(food2);
-
-        // Added File object because the file didn't seem to get created on Mac. Javadoc says this can happen
-        File file = new File("data/food.csv");
-        FileWriter fileWriter = null;
-
-        try {
-            fileWriter = new FileWriter(file); // added directory to make test cleanup easier
-            fileWriter.append(FILE_HEADER.toString());
-            fileWriter.append(NEW_LINE_SEPARATOR);
-            for (Food fd : foods) {
-                fileWriter.append(String.valueOf(fd.getId()));
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(fd.getFoodName()));
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(fd.getServingSize()));
-                fileWriter.append(COMMA_DELIMITER);
-                fileWriter.append(String.valueOf(fd.getFoodGroup()));
-                fileWriter.append("\n");
-            }
-        } catch (IOException ex) {
-            // changed to logger to get more debugging info
-            Logger.getLogger(FoodController.class.getName()).log(Level.SEVERE,
-                    "Error writing food data", ex);
-        } finally {
-            try {
-                if (fileWriter != null) {
-                    fileWriter.flush();
-                    fileWriter.close();
-                }
-            } catch (IOException ex) {
-                out.println("Error");
-            }
-        }
+//        Food food1 = new Food(1, "Pizza", 1, "Grain, Veggie, Milk");
+//        Food food2 = new Food(2, "Tacos", 1, "Meat");
+//
+//        List<Food> foods = new ArrayList<Food>();
+//        foods.add(food1);
+//        foods.add(food2);
+//
+//        // Added File object because the file didn't seem to get created on Mac. Javadoc says this can happen
+//        File file = new File("data/food.csv");
+//        FileWriter fileWriter = null;
+//
+//        try {
+//            fileWriter = new FileWriter(file); // added directory to make test cleanup easier
+//            fileWriter.append(FILE_HEADER.toString());
+//            fileWriter.append(NEW_LINE_SEPARATOR);
+//            for (Food fd : foods) {
+//                fileWriter.append(String.valueOf(fd.getId()));
+//                fileWriter.append(COMMA_DELIMITER);
+//                fileWriter.append(String.valueOf(fd.getFoodName()));
+//                fileWriter.append(COMMA_DELIMITER);
+//                fileWriter.append(String.valueOf(fd.getServingSize()));
+//                fileWriter.append(COMMA_DELIMITER);
+//                fileWriter.append(String.valueOf(fd.getFoodGroup()));
+//                fileWriter.append("\n");
+//            }
+//        } catch (IOException ex) {
+//            // changed to logger to get more debugging info
+//            Logger.getLogger(FoodController.class.getName()).log(Level.SEVERE,
+//                    "Error writing food data", ex);
+//        } finally {
+//            try {
+//                if (fileWriter != null) {
+//                    fileWriter.flush();
+//                    fileWriter.close();
+//                }
+//            } catch (IOException ex) {
+//                out.println("Error");
+//            }
+//        }
 
     }
 
@@ -103,31 +103,31 @@ public class FoodController implements Initializable {
      */
     public void readFoods() {
 
-        BufferedReader fileReader = null;
-        try {
-            List<Food> foods = new ArrayList<Food>();
-            String line = "";
-            fileReader = new BufferedReader(new FileReader("food.csv."));
-            fileReader.readLine();
-
-            while ((line = fileReader.readLine()) != null) {
-                String[] obj = line.split(COMMA_DELIMITER);
-                if (obj.length > 0) {
-                    Food fd = new Food(Integer.parseInt(obj[Food_ID]), obj[Food_Name_ID], Integer.parseInt(obj[Serving_Size_ID]), obj[Food_Group_ID]);
-                    foods.add(fd);
-                }
-                for (Food fd : foods) {
-                    out.println(fd.toString());
-                }
-            }
-        } catch (Exception ex) {
-            out.println("Error");
-        } finally {
-            try {
-                fileReader.close();
-            } catch (IOException ex) {
-                out.println("Error");
-            }
-        }
+//        BufferedReader fileReader = null;
+//        try {
+//            List<Food> foods = new ArrayList<Food>();
+//            String line = "";
+//            fileReader = new BufferedReader(new FileReader("food.csv."));
+//            fileReader.readLine();
+//
+//            while ((line = fileReader.readLine()) != null) {
+//                String[] obj = line.split(COMMA_DELIMITER);
+//                if (obj.length > 0) {
+//                    Food fd = new Food(Integer.parseInt(obj[Food_ID]), obj[Food_Name_ID], Integer.parseInt(obj[Serving_Size_ID]), obj[Food_Group_ID]);
+//                    foods.add(fd);
+//                }
+//                for (Food fd : foods) {
+//                    out.println(fd.toString());
+//                }
+//            }
+//        } catch (Exception ex) {
+//            out.println("Error");
+//        } finally {
+//            try {
+//                fileReader.close();
+//            } catch (IOException ex) {
+//                out.println("Error");
+//            }
+//        }
     }
 }

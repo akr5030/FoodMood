@@ -71,31 +71,31 @@ public class FoodLogViewController implements Initializable {
 
         System.out.println("Loaded FoodLogViewController");
 
-        // Test getting the list of food records entered by the user
-        // These records should have already been created in a previous step.
-        updateView();
-        TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords(foods);
-        // Test deleting a food record
-        deleteRecord();
-        TestHarness.getInstance().testFoodLogViewControllerDeleteFood(foods);
-        // Move on to the next test
-        TestHarness.getInstance().changeScene("/foodmood/Mood.fxml");
+//        // Test getting the list of food records entered by the user
+//        // These records should have already been created in a previous step.
+//        updateView();
+//        TestHarness.getInstance().testFoodLogViewControllerGetFoodRecords(foods);
+//        // Test deleting a food record
+//        deleteRecord();
+//        TestHarness.getInstance().testFoodLogViewControllerDeleteFood(foods);
+//        // Move on to the next test
+//        TestHarness.getInstance().changeScene("/foodmood/Mood.fxml");
     }
 
     public void updateView() {
-        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
-        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
-        getRecords(startDate, endDate);
+//        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
+//        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
+//        getRecords(startDate, endDate);
     }
 
     public void deleteRecord() {
-        foods.clear();
-        try {
-            FoodRecordDao dao = new FoodRecordDao();
-            dao.saveFoodRecords(foods);
-        } catch (DaoException ex) {
-            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        foods.clear();
+//        try {
+//            FoodRecordDao dao = new FoodRecordDao();
+//            dao.saveFoodRecords(foods);
+//        } catch (DaoException ex) {
+//            Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**
