@@ -33,6 +33,7 @@ public class TimeSeriesDataBuilder {
     }
 
     public TimeSeriesDataBuilder() {
+        // TODO remove other constructor, just use this to set defaults
         this(AggregationMethod.SUM, AggregationPeriod.DAY, DateTimeFormatter.ISO_DATE.toString());
     }
 
