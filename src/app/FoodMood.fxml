@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- author: jsm158 -->
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.FoodMoodController">
-    <children>
-        <Label fx:id="label" layoutX="10.0" layoutY="76.0" minHeight="16" minWidth="69" prefHeight="49.0" prefWidth="300.0" text="Please use testHarness.TestHarness for M02-A03" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-    </children>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.FoodMoodController">
+   <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Main">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Record food">
+            <fx:include fx:id="recordFoodTab" source="/foodmood/FoodRecordView.fxml" />
+          </Tab>
+            <Tab text="Record Mood">
+              <fx:include fx:id="recordMoodTab" source="/foodmood/Mood.fxml" />
+            </Tab>
+            <Tab text="View Food Log">
+              <fx:include fx:id="foodLogTab" source="/analytics/FoodLogView.fxml" />
+            </Tab>
+            <Tab text="View Mood Log">
+              <fx:include fx:id="moodLogTab" source="/analytics/MoodLogView.fxml" />
+            </Tab>
+            <Tab text="View Food/Mood Correlation">
+              <fx:include fx:id="scatterplotTab" source="/analytics/FoodMoodScatterplotView.fxml" />
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </AnchorPane>

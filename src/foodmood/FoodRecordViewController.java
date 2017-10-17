@@ -23,20 +23,20 @@ public class FoodRecordViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        addFoodRecord();
-        TestHarness.getInstance().testFoodRecordControllerAdd();
-        TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
+//        addFoodRecord();
+//        TestHarness.getInstance().testFoodRecordControllerAdd();
+//        TestHarness.getInstance().changeScene("/analytics/FoodLogView.fxml");
         
     }    
     
     public void addFoodRecord() {
-        FoodRecord fr = new FoodRecord(1, 1, LocalDate.of(2017, 1, 1), "taco");
-        FoodRecordDao dao = new FoodRecordDao();
-        try {
-            dao.saveFoodRecord(fr);
-        } catch (DaoException ex) {
-            Logger.getLogger(FoodRecordViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        FoodRecord fr = new FoodRecord(1, 1, LocalDate.of(2017, 1, 1), "taco");
+//        FoodRecordDao dao = new FoodRecordDao();
+//        try {
+//            dao.saveFoodRecord(fr);
+//        } catch (DaoException ex) {
+//            Logger.getLogger(FoodRecordViewController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
     
 }
