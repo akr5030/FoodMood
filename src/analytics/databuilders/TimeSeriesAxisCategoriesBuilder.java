@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 
 /**
  * The TimeSeriesAxisCategoriesBuilder class represents
- * 
+ *
  * @author jsm158
  * @since M03-A04
  *
@@ -16,30 +16,33 @@ public class TimeSeriesAxisCategoriesBuilder {
 
     private LocalDate startDate;
     private LocalDate endDate;
-    private String dateFormatString;
-    
-    public ObservableList<String> buildCategories() {
-        ObservableList<String> categories = FXCollections.observableArrayList();
-        
-        LocalDate date = startDate;
-        while (date.isBefore(endDate.plusDays(1))) {
-            categories.add(date.format(DateTimeFormatter.ofPattern(dateFormatString)));
-            date = date.plusDays(1);
-        }
-        
-        return categories;
-    }
+    private DateTimeFormatter dateFormat;
 
     public TimeSeriesAxisCategoriesBuilder() {
-        this.startDate = LocalDate.now().minusWeeks(1);
-        this.endDate = LocalDate.now();
-        this.dateFormatString = DateTimeFormatter.ISO_LOCAL_DATE.toString();
+        this(LocalDate.now().minusWeeks(1), LocalDate.now(), DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
-    public TimeSeriesAxisCategoriesBuilder(LocalDate startDate, LocalDate endDate, String dateFormat) {
+    public TimeSeriesAxisCategoriesBuilder(LocalDate startDate, LocalDate endDate, DateTimeFormatter dateFormat) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.dateFormatString = dateFormat;
+        this.dateFormat = dateFormat;
+    }
+
+    public ObservableList<String> buildCategories() throws DataBuilderException {
+
+        ObservableList<String> categories = FXCollections.observableArrayList();
+        LocalDate date = startDate;
+
+        if (startDate.isAfter(endDate)) {
+            throw new DataBuilderException("Start date must be before end date");
+        }
+
+        while (date.isBefore(endDate.plusDays(1))) {
+            categories.add(date.format(dateFormat));
+            date = date.plusDays(1);
+        }
+
+        return categories;
     }
 
     public LocalDate getStartDate() {
@@ -59,13 +62,13 @@ public class TimeSeriesAxisCategoriesBuilder {
         this.endDate = endDate;
         return this;
     }
-    
-    public String getDateFormatString() {
-        return dateFormatString;
+
+    public DateTimeFormatter getDateFormat() {
+        return dateFormat;
     }
 
-    public TimeSeriesAxisCategoriesBuilder setDateFormat(String dateFormat) {
-        this.dateFormatString = dateFormat;
+    public TimeSeriesAxisCategoriesBuilder setDateFormat(DateTimeFormatter dateFormat) {
+        this.dateFormat = dateFormat;
         return this;
     }
 
