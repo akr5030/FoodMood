@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * The TimeSeriesAxisCategoriesBuilder class represents
+ * Builds a list of dates
  *
  * @author jsm158
  * @since M03-A04
