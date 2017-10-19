@@ -413,7 +413,7 @@ public class TestHarness {
     /**
      * Runs the application and tests
      *
-     * @param args
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         logger.log(Level.INFO,

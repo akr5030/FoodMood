@@ -52,7 +52,6 @@ public class FoodController implements Initializable {
     /**
      * Gives the user the option to add a food.
      *
-     * @param fileName
      */
     public void addFoods() {
 

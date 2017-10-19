@@ -18,6 +18,7 @@ import javafx.stage.WindowEvent;
  * <li> Pass the stage to TestHarness, which handles changing views.</li>
  * <li>3. Pass the view associated with the first test to TestHarness, which
  * then loads the view and its controller.</li>
+ * </ol>
  *
  * @author jsm158
  * @since M02-A03
