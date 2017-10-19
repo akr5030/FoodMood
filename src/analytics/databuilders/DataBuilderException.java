@@ -1,7 +1,7 @@
 package analytics.databuilders;
 
 /**
- * The DataBuilderException class represents
+ * Custom exception class for DataBuilder-related exceptions
  *
  */
 public class DataBuilderException extends Exception {

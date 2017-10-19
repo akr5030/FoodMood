@@ -1,9 +1,8 @@
 package analytics.databuilders;
 
-import java.text.DateFormat;
+import foodmood.Quantifiable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.Collection;
 import java.util.HashMap;
 import javafx.collections.FXCollections;
@@ -33,7 +32,6 @@ public class TimeSeriesDataBuilder {
     }
 
     public TimeSeriesDataBuilder() {
-        // TODO remove other constructor, just use this to set defaults
         this(AggregationMethod.SUM, AggregationPeriod.DAY, DateTimeFormatter.ISO_DATE.toString());
     }
 
