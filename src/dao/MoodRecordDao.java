@@ -1,9 +1,15 @@
 package dao;
 
 import foodmood.MoodRecord;
-import java.sql.Connection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,7 +22,23 @@ import java.util.UUID;
  */
 public class MoodRecordDao {
 
+    private final static String FILENAME_PATTERN = "%s.txt";
+    private final HashMap<String, String> moodNames;
+
+    // positions of parts of a mood record
+    private static enum Record {
+        RECORDID,
+        ACCOUNTID,
+        DATE,
+        MOODID,
+        MOODNAME,
+        VALUE
+    }
+
     public MoodRecordDao() {
+        
+        // Get the list of moods and their names
+        moodNames = new HashMap<>();
     }
 
     /**
@@ -27,9 +49,23 @@ public class MoodRecordDao {
      * @param endDate the end of the date range (inclusive)
      * @param accountId the ID of the account associated with the records
      * @return the list of mood records
+     * @throws dao.DaoException if the file could not be read
      */
-    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate, int accountId) {
-        return null;
+    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate, String accountId) throws DaoException {
+        ArrayList<MoodRecord> records = new ArrayList<>();
+        Path data = Paths.get(ConnectionManager.DATA_DIR, ConnectionManager.ACCOUNT_DATA_DIR, String.format(FILENAME_PATTERN, accountId));
+
+        if (Files.exists(data)) {
+            try (BufferedReader in = Files.newBufferedReader(data)) {
+                while (in != null) {
+
+                }
+            } catch (IOException ex) {
+                throw new DaoException("Could not read mood record file " + data.toAbsolutePath().toString(), ex);
+            }
+        }
+
+        return records;
     }
 
     /**
@@ -72,5 +108,23 @@ public class MoodRecordDao {
      */
     private UUID generateRecordId() throws DaoException {
         return null;
+    }
+
+    /**
+     * Returns a new MoodRecord by parsing information from a string
+     *
+     * @param line a string with record information
+     * @return the new MoodRecord
+     */
+    private MoodRecord parseRecord(String line) {
+        String[] attributes = line.split(",");
+
+        return new MoodRecord(attributes[Record.RECORDID.ordinal()],
+                attributes[Record.ACCOUNTID.ordinal()],
+                LocalDate.parse(attributes[Record.DATE.ordinal()]),
+                attributes[Record.MOODID.ordinal()],
+                "",
+                Double.parseDouble(attributes[Record.VALUE.ordinal()]));
+
     }
 }
