@@ -35,7 +35,7 @@ public interface Quantifiable {
      *
      * @return the ID of the mood or food
      */
-    public int getTypeId();
+    public String getTypeId();
 
     /**
      * Returns the numeric value of the item recorded
