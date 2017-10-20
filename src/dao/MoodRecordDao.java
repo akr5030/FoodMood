@@ -25,18 +25,15 @@ public class MoodRecordDao {
     private final static String FILENAME_PATTERN = "%s.txt";
     private final HashMap<String, String> moodNames;
 
-    // positions of parts of a mood record
-    private static enum Record {
-        RECORDID,
-        ACCOUNTID,
-        DATE,
-        MOODID,
-        MOODNAME,
-        VALUE
-    }
+    // index of fields in a line
+    private final static int RECORDID = 0;
+    private final static int ACCOUNTID = 1;
+    private final static int DATE = 2;
+    private final static int MOODID = 3;
+    private final static int VALUE = 4;
 
     public MoodRecordDao() {
-        
+
         // Get the list of moods and their names
         moodNames = new HashMap<>();
     }
@@ -115,16 +112,21 @@ public class MoodRecordDao {
      *
      * @param line a string with record information
      * @return the new MoodRecord
+     * @throws dao.DaoException if the string is not in the correct format
      */
-    private MoodRecord parseRecord(String line) {
+    protected MoodRecord parseRecord(String line) throws DaoException {
         String[] attributes = line.split(",");
 
-        return new MoodRecord(attributes[Record.RECORDID.ordinal()],
-                attributes[Record.ACCOUNTID.ordinal()],
-                LocalDate.parse(attributes[Record.DATE.ordinal()]),
-                attributes[Record.MOODID.ordinal()],
+        if (attributes.length != 5) {
+            throw new DaoException("Record was in invalid format");
+        }
+
+        return new MoodRecord(attributes[RECORDID],
+                attributes[ACCOUNTID],
+                LocalDate.parse(attributes[DATE]),
+                attributes[MOODID],
                 "",
-                Double.parseDouble(attributes[Record.VALUE.ordinal()]));
+                Double.parseDouble(attributes[VALUE]));
 
     }
 }
