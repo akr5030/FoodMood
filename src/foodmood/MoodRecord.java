@@ -98,10 +98,4 @@ public class MoodRecord implements Quantifiable {
     public String getMoodId() {
         return moodId;
     }
-
-    @Override
-    public String getTypeId() {
-        return getMoodId();
-    }
-
 }

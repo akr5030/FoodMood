@@ -29,15 +29,6 @@ public interface Quantifiable {
     public String getName();
 
     /**
-     * Returns the ID of the item recorded
-     *
-     * i.e. the ID of the mood or food
-     *
-     * @return the ID of the mood or food
-     */
-    public String getTypeId();
-
-    /**
      * Returns the numeric value of the item recorded
      *
      * @return
