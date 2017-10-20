@@ -2,16 +2,18 @@ package dao;
 
 import foodmood.MoodRecord;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The MoodRecordDao class provides an interface to read and write mood records
@@ -22,7 +24,7 @@ import java.util.UUID;
  */
 public class MoodRecordDao {
 
-    private final static String FILENAME_PATTERN = "%s.txt";
+    private final static String FILENAME_PATTERN = "%s_moods.txt";
     private final HashMap<String, String> moodNames;
 
     // index of fields in a line
@@ -34,7 +36,7 @@ public class MoodRecordDao {
 
     public MoodRecordDao() {
 
-        // Get the list of moods and their names
+        // TODO Get the list of moods and their names
         moodNames = new HashMap<>();
     }
 
@@ -48,63 +50,69 @@ public class MoodRecordDao {
      * @return the list of mood records
      * @throws dao.DaoException if the file could not be read
      */
-    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate, String accountId) throws DaoException {
-        ArrayList<MoodRecord> records = new ArrayList<>();
+    public ArrayList<MoodRecord> getMoodRecords(LocalDate startDate, LocalDate endDate, String accountId) throws DaoException {
+        // TODO refactor this if  https://github.com/redjen/FoodMood/pull/14 is approved
         Path data = Paths.get(ConnectionManager.DATA_DIR, ConnectionManager.ACCOUNT_DATA_DIR, String.format(FILENAME_PATTERN, accountId));
 
+        ArrayList<MoodRecord> records = new ArrayList<>();
+
         if (Files.exists(data)) {
+            String line;
             try (BufferedReader in = Files.newBufferedReader(data)) {
-                while (in != null) {
-
+                while ((line = in.readLine()) != null) {
+                    MoodRecord record = parseRecord(line);
+                    if ((!record.getDate().isBefore(startDate)) && !record.getDate().isAfter(endDate.plusDays(1))) {
+                        records.add(record);
+                    }
                 }
-            } catch (IOException ex) {
-                throw new DaoException("Could not read mood record file " + data.toAbsolutePath().toString(), ex);
+            } catch (IOException | DaoException ex) {
+                Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            Logger.getLogger(MoodRecordDao.class.getName()).log(Level.INFO,
+                    String.format("%s not found", data.toAbsolutePath().toString()));
         }
-
         return records;
-    }
-
-    /**
-     * Returns all of the mood records entered by any user within the specified
-     * date range (inclusive)
-     *
-     * @param startDate the start of the date range (inclusive)
-     * @param endDate the end of the date range (inclusive)
-     * @return the list of mood records
-     */
-    public ArrayList<MoodRecord> getMoodRecords(Date startDate, Date endDate) {
-        return null;
     }
 
     /**
      * Saves a single mood record
      *
-     * @param moodRecord the mood record to save
+     * @param accountId
+     * @param date
+     * @param moodId
+     * @param value
      */
-    public void saveMoodRecord(MoodRecord moodRecord) {
+    public void saveMoodRecord(String accountId, LocalDate date, String moodId, double value) {
 
-    }
+        BufferedWriter bw = null;
 
-    /**
-     * Saves a list of mood records
-     *
-     * @param moodRecords the mood record to save
-     */
-    public void saveMoodRecords(List<MoodRecord> moodRecords) {
+        Path data = Paths.get(ConnectionManager.DATA_DIR,
+                ConnectionManager.ACCOUNT_DATA_DIR, String.format(FILENAME_PATTERN, accountId));
 
-    }
+        String recordId = UUID.randomUUID().toString();
 
-    /**
-     * Generates a new, unique ID for the mood entry
-     *
-     * Creating the ID elsewhere is not recommended as uniqueness needs to be
-     * enforced.
-     *
-     * @return a new unique ID
-     */
-    private UUID generateRecordId() throws DaoException {
-        return null;
+        MoodRecord record = new MoodRecord(recordId, accountId, date, moodId, "", value);
+
+        try {
+            if (!Files.exists(data)) {
+                Files.createFile(data);
+            }
+            bw = Files.newBufferedWriter(data, StandardOpenOption.APPEND);
+            bw.write(writeRecord(record));
+            bw.write("\n");
+            bw.flush();
+        } catch (IOException ex) {
+            Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     /**
@@ -128,5 +136,25 @@ public class MoodRecordDao {
                 "",
                 Double.parseDouble(attributes[VALUE]));
 
+    }
+
+    /**
+     * Generates a string representing the record for use in data files
+     *
+     * @param record the record
+     * @return a string representation of the record
+     */
+    protected String writeRecord(MoodRecord record) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(record.getId());
+        sb.append(",");
+        sb.append(record.getAccountId());
+        sb.append(",");
+        sb.append(record.getDate().toString());
+        sb.append(",");
+        sb.append(record.getMoodId());
+        sb.append(",");
+        sb.append(record.getValue());
+        return sb.toString();
     }
 }
