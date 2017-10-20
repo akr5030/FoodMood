@@ -57,4 +57,21 @@ public class MoodRecordTest {
         assertEquals(MOODID, record.getMoodId());
     }
 
+    @Test
+    public void testEquals() {
+        MoodRecord record2 = new MoodRecord(ID, "test", LocalDate.now(), "test", "test", 1.0);
+        assertEquals(record, record2);
+    }
+
+    @Test
+    public void testNotEquals() {
+        MoodRecord record2 = new MoodRecord("test", "test", LocalDate.now(), "test", "test", 1.0);
+        assertNotEquals(record, record2);
+    }
+
+    @Test
+    public void testNotEqualsObject() {
+        assertNotEquals(record, new Object());
+    }
+
 }

@@ -16,7 +16,9 @@ import org.junit.BeforeClass;
 
 /**
  *
- * @author redjen
+ * Tests for MoodRecordDao
+ *
+ * @author jsm158
  */
 public class MoodRecordDaoTest {
 

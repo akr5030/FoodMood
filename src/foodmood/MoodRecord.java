@@ -1,6 +1,7 @@
 package foodmood;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * MoodRecord represents a mood value recorded by a user on a date.
@@ -69,8 +70,8 @@ public class MoodRecord implements Quantifiable {
     }
 
     /**
-
-    /**
+     *
+     * /**
      * Returns the associated mood name
      *
      * @return A string of the mood name
@@ -97,5 +98,22 @@ public class MoodRecord implements Quantifiable {
      */
     public String getMoodId() {
         return moodId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (MoodRecord.class.isAssignableFrom(o.getClass())) {
+            MoodRecord m = (MoodRecord) o;
+            return (this.id.equals(m.id));
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 }

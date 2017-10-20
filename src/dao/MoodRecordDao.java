@@ -11,6 +11,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +36,6 @@ public class MoodRecordDao {
     private final static int VALUE = 4;
 
     public MoodRecordDao() {
-
         // TODO Get the list of moods and their names
         moodNames = new HashMap<>();
     }
@@ -111,6 +111,39 @@ public class MoodRecordDao {
                 } catch (IOException ex) {
                     Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+        }
+    }
+
+    /**
+     * Deletes the specified record if it exists
+     *
+     * @param record the record to remove
+     * @throws DaoException if an exception occurs
+     */
+    public void deleteRecord(MoodRecord record) throws DaoException {
+        Path data = Paths.get(ConnectionManager.DATA_DIR,
+                ConnectionManager.ACCOUNT_DATA_DIR, String.format(FILENAME_PATTERN, record.getAccountId()));
+        ArrayList<MoodRecord> records = getMoodRecords(LocalDate.MIN, LocalDate.MAX.minusDays(1), record.getAccountId());
+
+        boolean removed = records.remove(record);
+
+        // remove the existing data and write the new list without the deleted record
+        if (removed) {
+            try {
+                Files.deleteIfExists(data);
+            } catch (IOException ex) {
+                Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try (BufferedWriter out = Files.newBufferedWriter(data)) {
+
+                for (MoodRecord r : records) {
+                    out.write(writeRecord(record));
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
