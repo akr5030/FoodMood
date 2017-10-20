@@ -30,21 +30,14 @@ public class accountModel implements Initializable {
     
   
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addUser();
-//        TestHarness.getInstance().testMoodControllerAdd();
-//        readMood();
-//        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
+        readUser();
     }
 
-    // Add a mood to the 'database'
+    // Add a user
     public void addUser() {
         User u = new User(1, "Test", "User", "TestUser", "password");
         User u1 = new User(2, "John", "Doe", "JohnDoe", "password");
