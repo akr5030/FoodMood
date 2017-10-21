@@ -18,7 +18,7 @@ public class MoodRecord implements Quantifiable {
     private final String id;
     private final String accountId;
     private final LocalDate date;
-    private final String moodId;
+    private final int moodId;
     private final String name;
     private final double value;
 
@@ -32,7 +32,7 @@ public class MoodRecord implements Quantifiable {
      * @param moodName the associated mood's name
      * @param value the value entered by the user
      */
-    public MoodRecord(String id, String accountId, LocalDate date, String moodId, String moodName, double value) {
+    public MoodRecord(String id, String accountId, LocalDate date, int moodId, String moodName, double value) {
         this.id = id;
         this.accountId = accountId;
         this.date = date;
@@ -96,7 +96,7 @@ public class MoodRecord implements Quantifiable {
      *
      * @return the mood ID
      */
-    public String getMoodId() {
+    public int getMoodId() {
         return moodId;
     }
 

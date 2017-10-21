@@ -1,5 +1,6 @@
 package dao;
 
+import foodmood.Mood;
 import foodmood.MoodRecord;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +12,6 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class MoodRecordDao {
 
     private final static String FILENAME_PATTERN = "%s_moods.txt";
-    private final HashMap<String, String> moodNames;
+    private final HashMap<Integer, String> moodNames;
 
     // index of fields in a line
     private final static int RECORDID = 0;
@@ -36,8 +36,17 @@ public class MoodRecordDao {
     private final static int VALUE = 4;
 
     public MoodRecordDao() {
-        // TODO Get the list of moods and their names
+
+        MoodDao dao;
         moodNames = new HashMap<>();
+
+        try {
+            dao = new MoodDao();
+            ArrayList<Mood> moods = dao.getAllMoods();
+            moods.forEach(mood -> moodNames.put(mood.getId(), mood.getMoodName()));
+        } catch (DaoException ex) {
+            Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -83,7 +92,7 @@ public class MoodRecordDao {
      * @param moodId
      * @param value
      */
-    public void saveMoodRecord(String accountId, LocalDate date, String moodId, double value) {
+    public void saveMoodRecord(String accountId, LocalDate date, int moodId, double value) {
 
         BufferedWriter bw = null;
 
@@ -92,6 +101,7 @@ public class MoodRecordDao {
 
         String recordId = UUID.randomUUID().toString();
 
+        // TODO replace the empty string for moodId with the correct value once 
         MoodRecord record = new MoodRecord(recordId, accountId, date, moodId, "", value);
 
         try {
@@ -165,10 +175,9 @@ public class MoodRecordDao {
         return new MoodRecord(attributes[RECORDID],
                 attributes[ACCOUNTID],
                 LocalDate.parse(attributes[DATE]),
-                attributes[MOODID],
-                "",
+                Integer.parseInt(attributes[MOODID]),
+                moodNames.getOrDefault(attributes[MOODID], ""),
                 Double.parseDouble(attributes[VALUE]));
-
     }
 
     /**
