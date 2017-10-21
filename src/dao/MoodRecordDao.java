@@ -101,7 +101,6 @@ public class MoodRecordDao {
 
         String recordId = UUID.randomUUID().toString();
 
-        // TODO replace the empty string for moodId with the correct value once 
         MoodRecord record = new MoodRecord(recordId, accountId, date, moodId, "", value);
 
         try {
