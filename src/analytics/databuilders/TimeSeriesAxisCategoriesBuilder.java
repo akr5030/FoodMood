@@ -9,8 +9,47 @@ import javafx.collections.ObservableList;
  * Builds a list a list of dates between specified start and end dates. The
  * dates are formatted using a DateTimeFormatter passed to the class.
  *
+ * <p>
  * The default time period is the past week and the default format is
- * {@link DateTimeFormatter#ISO_LOCAL_DATE}
+ * {@link DateTimeFormatter#ISO_LOCAL_DATE}</p>
+ *
+ * <p>
+ * This class solves the problem of generating an complete, ordered list of
+ * dates to display on the x-axis of a JavaFX line graph. JavaFX does not
+ * provide a date-based axis. If we built the graph just by creating a series of
+ * date strings, Java would only display the dates contained in the series,
+ * skipping any days with missing data,, and would not order them correctly. If
+ * you create a list of strings separately and set them as the categories for
+ * the x-axis, however, JavaFX will add all of them to the axis in the specified
+ * order then match up data points.</p>
+ *
+ * <p>
+ * Usage:</p>
+ *
+ * <pre>
+ * // Reference to a line graph in the fxml view
+ * \@FXML
+ * private LineChart lineChart;
+ *
+ * // Reference to the x-axis
+ * \@FXML
+ * private CategoryAxis axis;
+ *
+ * // List of strings to be used for the axis categories
+ * ObservableList&gt;String&lt; categories;
+ *
+ * // Method 1: TimeSeriesAxisCategoriesBuilder tsb = new TimeSeriesAxisCategoriesBuilder(
+ *         theStartDate, theEndDate, theDateFormat);
+ * categories = tsb.buildCategories();
+ * axis.setCategories(categories);
+ *
+ * // Method 2: // use any or none of the setters to configure the builder as
+ * desired TimeSeriesAxisCategoriesBuilder tsb = new TimeSeriesAxisCategoriesBuilder();
+ * categories = tsb.setStartDate(theStartDate)
+ *     .setEndDate(theEndDate)
+ *     .buildCategories();
+ * axis.setCategories(categories);
+ * </pre>
  *
  * @author jsm158
  * @since M03-A04

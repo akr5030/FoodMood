@@ -51,7 +51,7 @@ public class TimeSeriesAxisCategoriesBuilderTest {
     @Test
     public void testSetStartDate() {
         tsbParams.setStartDate(LocalDate.of(2016, Month.MARCH, 3));
-        assertEquals(LocalDate.of(2016, Month.MARCH, 3), tsbDefault.getStartDate());
+        assertEquals(LocalDate.of(2016, Month.MARCH, 3), tsbParams.getStartDate());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class TimeSeriesAxisCategoriesBuilderTest {
 
     @Test
     public void testGetDateFormatDefault() {
-        assertEquals(DateTimeFormatter.ISO_DATE, tsbDefault.getDateFormat());
+        assertEquals(DateTimeFormatter.ISO_LOCAL_DATE, tsbDefault.getDateFormat());
     }
 
     @Test
