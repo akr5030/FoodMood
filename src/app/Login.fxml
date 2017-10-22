@@ -38,17 +38,14 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="password" alignment="CENTER" pickOnBounds="false" promptText="Password">
+                  <PasswordField fx:id="password" alignment="CENTER" promptText="Password">
                      <font>
                         <Font size="20.0" />
                      </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
-                  </TextField>
+                  </PasswordField>
                   <Button mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="21.0" prefWidth="529.0" text="Login">
                      <VBox.margin>
                         <Insets top="25.0" />
