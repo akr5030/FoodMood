@@ -15,23 +15,23 @@ public class MoodViewController implements Initializable {
 
     //mood slider for excited
     @FXML
-    private Slider Excited;
+    private Slider moodExcited;
     
     //mood slider for happy
     @FXML
-    private Slider Happy;
+    private Slider moodHappy;
     
     //mood slider for meh
     @FXML
-    private Slider Meh;
+    private Slider moodMeh;
     
     //mood slider for sad
     @FXML
-    private Slider Sad;
+    private Slider moodSad;
     
     //mood slider for angry
     @FXML
-    private Slider Angry;
+    private Slider moodAngry;
     
     
     /**
