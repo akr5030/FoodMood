@@ -28,7 +28,6 @@ import javafx.scene.chart.XYChart;
  * Usage:
  *
  * <pre>
- * &commat;FXML
  * private LineChart lineChart
  *
  * HashMap&gt;String, DataPoint&lt; dataSeriesMap = new TimeSeriesDataBuilder()
@@ -38,7 +37,7 @@ import javafx.scene.chart.XYChart;
  *         .setDateFormat(DateTimeFormatter.ofPattern("MMM d")
  *         .buildSeries();
  * 
- * dataSeriesMap.forEach((name, series) -> lc.getData().add(series));
+ * dataSeriesMap.forEach((name, series) -&lt; lc.getData().add(series));
  * </pre>
  *
  * @author jsm158
