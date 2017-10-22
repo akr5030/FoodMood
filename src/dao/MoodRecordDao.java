@@ -87,10 +87,10 @@ public class MoodRecordDao {
     /**
      * Saves a single mood record
      *
-     * @param accountId
-     * @param date
-     * @param moodId
-     * @param value
+     * @param accountId the account ID
+     * @param date the date
+     * @param moodId the mood id
+     * @param value the value
      */
     public void saveMoodRecord(String accountId, LocalDate date, int moodId, double value) {
 

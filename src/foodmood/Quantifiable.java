@@ -24,14 +24,14 @@ public interface Quantifiable {
     /**
      * Returns the name of the item recorded
      *
-     * @return
+     * @return the name
      */
     public String getName();
 
     /**
      * Returns the numeric value of the item recorded
      *
-     * @return
+     * @return the value
      */
     public double getValue();
 }
