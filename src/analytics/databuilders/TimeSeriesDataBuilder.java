@@ -39,7 +39,7 @@ public class TimeSeriesDataBuilder {
         dataPoints = new HashMap<>();
         this.aggregationMethod = aggregationMethod;
         this.aggregationPeriod = aggregationPeriod;
-        this.dateFormat = DateTimeFormatter.ofPattern(dateFormat);
+        this.dateFormat = this.dateFormat;
     }
 
     public TimeSeriesDataBuilder addData(final Collection<Quantifiable> data) {

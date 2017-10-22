@@ -40,6 +40,7 @@ IST 412 Group 7 project
 * analytics.databuilders.DataBuilderException (Builder pattern)
 * analytics.databuilders.TimeSeriesAxisCategoriesBuilder (Builder pattern)
 * analytics.databuilders.TimeSeriesDataBuilder (Builder pattern)
+* foodmood.Quantifiable (Builder pattern)
 
 
 #### Matt
