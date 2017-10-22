@@ -8,8 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="app.MoodViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MoodViewController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -111,7 +110,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="datePicker" />
+                        <DatePicker fx:id="datePicker" promptText="Enter Today's Date" />
                      </children>
                   </HBox>
                   <Button fx:id="moodButton" mnemonicParsing="false" text="Submit">
