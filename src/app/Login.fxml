@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -9,8 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="app.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
    <children>
       <VBox id="VBox" alignment="CENTER" layoutX="39.0" layoutY="28.0" prefHeight="343.0" prefWidth="528.0">
          <children>
@@ -57,6 +57,14 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Label fx:id="errorLabel" prefHeight="26.0" prefWidth="530.0" text="Username/Password Incorrect" textFill="RED" textOverrun="CLIP" visible="false">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </children>
