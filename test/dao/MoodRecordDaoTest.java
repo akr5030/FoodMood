@@ -26,7 +26,7 @@ public class MoodRecordDaoTest {
     private final static String TEST1_RECORD_ID = "test1";
     private final static String TEST1_ACCOUNT_ID = "account1";
     private final static String TEST1_DATE = LocalDate.of(2017, Month.APRIL, 1).toString();
-    private final static String TEST1_MOOD_ID = "mood1";
+    private final static int TEST1_MOOD_ID = 1;
     private final static String TEST1_MOOD_NAME = "name 1";
     private final static double TEST1_VALUE = 3.5;
 
