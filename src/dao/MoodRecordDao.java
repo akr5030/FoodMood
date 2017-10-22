@@ -38,12 +38,15 @@ public class MoodRecordDao {
     public MoodRecordDao() {
 
         MoodDao dao;
+        ArrayList<Mood> moods;
         moodNames = new HashMap<>();
 
         try {
             dao = new MoodDao();
-            ArrayList<Mood> moods = dao.getAllMoods();
-            moods.forEach(mood -> moodNames.put(mood.getId(), mood.getMoodName()));
+            moods = dao.getAllMoods();
+            if (moods != null) {
+                moods.forEach(mood -> moodNames.put(mood.getId(), mood.getMoodName()));
+            }
         } catch (DaoException ex) {
             Logger.getLogger(MoodRecordDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -175,7 +178,7 @@ public class MoodRecordDao {
                 attributes[ACCOUNTID],
                 LocalDate.parse(attributes[DATE]),
                 Integer.parseInt(attributes[MOODID]),
-                moodNames.getOrDefault(attributes[MOODID], ""),
+                moodNames.getOrDefault(attributes[MOODID], " "),
                 Double.parseDouble(attributes[VALUE]));
     }
 
