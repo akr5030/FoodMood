@@ -59,7 +59,7 @@ public class MoodRecordDao {
      * @return the list of mood records
      * @throws dao.DaoException if the file could not be read
      */
-    public ArrayList<MoodRecord> getMoodRecords(LocalDate startDate, LocalDate endDate, String accountId) throws DaoException {
+    public ArrayList<MoodRecord> getMoodRecords(LocalDate startDate, LocalDate endDate, int accountId) throws DaoException {
         // TODO refactor this if  https://github.com/redjen/FoodMood/pull/14 is approved
         Path data = Paths.get(ConnectionManager.DATA_DIR, ConnectionManager.ACCOUNT_DATA_DIR, String.format(FILENAME_PATTERN, accountId));
 
@@ -92,7 +92,7 @@ public class MoodRecordDao {
      * @param moodId
      * @param value
      */
-    public void saveMoodRecord(String accountId, LocalDate date, int moodId, double value) {
+    public void saveMoodRecord(int accountId, LocalDate date, int moodId, double value) {
 
         BufferedWriter bw = null;
 
@@ -172,7 +172,7 @@ public class MoodRecordDao {
         }
 
         return new MoodRecord(attributes[RECORDID],
-                attributes[ACCOUNTID],
+                Integer.parseInt(attributes[ACCOUNTID]),
                 LocalDate.parse(attributes[DATE]),
                 Integer.parseInt(attributes[MOODID]),
                 moodNames.getOrDefault(attributes[MOODID], ""),

@@ -14,8 +14,8 @@ public class MoodRecordTest {
 
     private MoodRecord record;
     private final static String ID = "record1";
-    private final static String ACCOUNT = "account1";
-    private final static String MOODID = "mood1";
+    private final static int ACCOUNT = 1;
+    private final static int MOODID = 1;
     private final static String MOODNAME = "moodname1";
     private final static double VALUE = 1.0;
 
@@ -59,13 +59,13 @@ public class MoodRecordTest {
 
     @Test
     public void testEquals() {
-        MoodRecord record2 = new MoodRecord(ID, "test", LocalDate.now(), "test", "test", 1.0);
+        MoodRecord record2 = new MoodRecord(ID, 1, LocalDate.now(), 1, "test", 1.0);
         assertEquals(record, record2);
     }
 
     @Test
     public void testNotEquals() {
-        MoodRecord record2 = new MoodRecord("test", "test", LocalDate.now(), "test", "test", 1.0);
+        MoodRecord record2 = new MoodRecord("test", 1, LocalDate.now(), 1, "test", 1.0);
         assertNotEquals(record, record2);
     }
 
