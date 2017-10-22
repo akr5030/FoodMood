@@ -1,22 +1,23 @@
 package accounts;
 
 /**
- *
+ * This is the User class that gets user information.
  * @author aswecker
  */
 public class User implements Person{
 
+    private final static int recordid = 0;
     private String fname = "";
     private String lname = "";
-    private int userid = 0;
+    public static final int userid = 0;
     private String username = " ";
     private String password = "";
     
     
 
-    public User(int inuserid, String infname, String inlname, String inusername, String inpassword) {
+    public User(int inrecordid, int inuserid, String infname, String inlname, String inusername, String inpassword) {
 
-        this.userid = inuserid;
+        
         this.fname = infname;
         this.lname = inlname;
         this.username = inusername;
@@ -24,67 +25,68 @@ public class User implements Person{
 
     }
 
+    
+    public int recordid() {
+
+        return this.recordid;
+
+    }
+    
+    public int userid() {
+
+        return this.userid;
+
+    }
+    
     @Override
-    public String Getfname() {
+    public String getFName() {
 
         return this.fname;
 
     }
 
     @Override
-    public void Setfname(String infname) {
+    public void setFName(String infname) {
 
         this.fname = infname;
 
     }
 
     @Override
-    public String Getlname() {
+    public String getLName() {
 
         return this.lname;
     }
 
     @Override
-    public void Setlname(String inlname) {
+    public void setLName(String inlname) {
 
         this.lname = inlname;
 
     }
 
-    @Override
-    public int Getuserid() {
-
-        return this.userid;
-
-    }
+    
 
     @Override
-    public void Setuserid(int inuserid) {
-
-        this.userid = inuserid;
-
-    }
-
-    @Override
-    public String Getusername() {
+    public String getUsername() {
 
         return this.username;
     }
     @Override
-    public void Setusername(String inusername){
+    public void setUsername(String inusername){
         
         this.username = inusername;
         
     }
     @Override
-    public String Getpassword() {
+    public String getPassword() {
 
         return this.password;
 
     }
 
     @Override
-    public void Setpassword(String inpassword) {
+    public void setPassword(String inpassword) {
 
         this.password = inpassword;
 
