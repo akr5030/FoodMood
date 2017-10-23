@@ -58,14 +58,14 @@
                         </Slider>
                      </children>
                   </HBox>
-                  <HBox fx:id="moodMeh" prefHeight="18.0" prefWidth="551.0">
+                  <HBox prefHeight="18.0" prefWidth="551.0">
                      <children>
                         <Label prefHeight="30.0" prefWidth="66.0" text="Meh">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodMeh" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="49.0" top="5.0" />
                            </HBox.margin>
