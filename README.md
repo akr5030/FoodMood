@@ -4,7 +4,8 @@ IST 412 Group 7 project
 ***
 # Account information
 
-// TODO list accounts here
+Username: JDoe
+Password: 123456
 
 
 

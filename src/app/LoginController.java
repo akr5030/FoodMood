@@ -1,5 +1,6 @@
 package app;
 
+import dao.AccountDao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,18 +52,25 @@ public class LoginController implements Initializable {
         Stage stage;
         Scene scene;
         Parent root;
-        
+
         try {
             // TODO implement this for real once the account changes are in
             // for now, just redirect to the app without authentication
+            AccountDao dao = new AccountDao();
 
-            node = (Node) event.getSource();
-            stage = (Stage) node.getScene().getWindow();
-            /* Exception */
-            root = FXMLLoader.load(getClass().getResource("FoodMood.fxml"));
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            if (dao.checklogin(username.getText(), password.getText())) {
+                node = (Node) event.getSource();
+                stage = (Stage) node.getScene().getWindow();
+                /* Exception */
+                root = FXMLLoader.load(getClass().getResource("FoodMood.fxml"));
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                errorLabel.setText("Login failed");
+                errorLabel.setVisible(true);
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             errorLabel.setText("Login failed due to exception.");
