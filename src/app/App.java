@@ -48,6 +48,7 @@ public class App extends Application {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, "Could not create data directory", ex);
         }
         launch(args);
+        
     }
 
 }
