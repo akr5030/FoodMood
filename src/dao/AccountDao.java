@@ -83,8 +83,8 @@ public class AccountDao {
         boolean check = false;
         
 
-        if (username == "JDoe"
-                && password=="123456") {
+        if ("JDoe".equals(username)
+                && "123456".equals(password)) {
             check = true;
         }
 
