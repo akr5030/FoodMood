@@ -14,33 +14,32 @@ import static org.junit.Assert.*;
  * @author aswecker
  */
 public class AccountDaoTest {
-    
+
     private AccountDao dao;
     private final static int TEST1_ACCOUNT_ID = 002;
     private final static String TEST1_FNAME = "Test";
     private final static String TEST1_LNAME = "User";
     private final static String TEST1_USERNAME = "TUser";
     private final static String TEST1_PASSWORD = "ABC";
-    
+
     public AccountDaoTest() {
-        
-        
+
     }
-    
+
     @BeforeClass
     public static void setUpClass() throws IOException {
-        
+
     }
-    
+
     @AfterClass
     public static void tearDownClass() throws IOException {
     }
-    
+
     @Before
     public void setUp() throws IOException {
         dao = new AccountDao();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -90,5 +89,5 @@ public class AccountDaoTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
-    
+
 }

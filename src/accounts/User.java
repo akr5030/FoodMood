@@ -2,9 +2,10 @@ package accounts;
 
 /**
  * This is the User class that gets user information.
+ *
  * @author aswecker
  */
-public class User implements Person{
+public class User implements Person {
 
     private String fname = "John";
     private String lname = "Doe";
@@ -68,12 +69,14 @@ public class User implements Person{
 
         return this.username;
     }
+
     @Override
-    public void Setusername(String inusername){
-        
+    public void Setusername(String inusername) {
+
         this.username = inusername;
-        
+
     }
+
     @Override
     public String Getpassword() {
 
@@ -87,9 +90,5 @@ public class User implements Person{
         this.password = inpassword;
 
     }
-
-    
-
-
 
 }

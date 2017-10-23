@@ -24,23 +24,15 @@ import java.util.logging.Logger;
  */
 public class AccountDao {
 
-    
     User u;
     ArrayList<Person> personlist = new ArrayList<Person>();
-    
-    
- 
-    
-    
 
     /**
      * Constructs a new AccountDao
      */
     public AccountDao() {
-        
-        
-    }
 
+    }
 
     /**
      * Returns a list of all accounts
@@ -64,8 +56,6 @@ public class AccountDao {
         return check;
 
     }
-       
-
 
     /**
      * Returns the account associated with the specified account ID.
@@ -79,30 +69,25 @@ public class AccountDao {
      */
     public boolean getAccount(int accountId) throws DaoException {
 
-        
         boolean check = false;
-        if(u.Getaccountid() == 001){
+        if (u.Getaccountid() == 001) {
             check = true;
 
         }
 
         return check;
-        }
-    
+    }
 
     public boolean checklogin(String username, String password) {
 
         boolean check = false;
 
-            if (u.Getusername().equalsIgnoreCase("JDoe")
-                    && u.Getpassword().equalsIgnoreCase("123456")) {
-                check = true;
-            }
-        
+        if (u.Getusername().equalsIgnoreCase("JDoe")
+                && u.Getpassword().equalsIgnoreCase("123456")) {
+            check = true;
+        }
 
         return check;
 
     }
 }
-
-
