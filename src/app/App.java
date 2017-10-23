@@ -1,5 +1,7 @@
 package app;
 
+import dao.ConnectionManager;
+import dao.DaoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +42,11 @@ public class App extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        try {
+            ConnectionManager.createDatabaseIfNotExists();
+        } catch (DaoException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, "Could not create data directory", ex);
+        }
         launch(args);
     }
 
