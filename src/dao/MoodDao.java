@@ -25,7 +25,7 @@ public class MoodDao {
      */
     public MoodDao() throws DaoException {
         m = createMoods();
-        if(e.getEnvironment()== "development"){
+        if(e.getDevelopment() != null && e.getEnvironment()== "development"){
             System.out.println("Loaded Moods:");
             for(Mood md : m){
                 System.out.println(md.getMoodName());
