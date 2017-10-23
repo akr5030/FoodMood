@@ -81,9 +81,10 @@ public class AccountDao {
     public boolean checklogin(String username, String password) {
 
         boolean check = false;
+        
 
-        if (u.Getusername().equalsIgnoreCase("JDoe")
-                && u.Getpassword().equalsIgnoreCase("123456")) {
+        if (username == "JDoe"
+                && password=="123456") {
             check = true;
         }
 
