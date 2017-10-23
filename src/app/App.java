@@ -26,7 +26,7 @@ public class App extends Application {
         Scene scene;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("FoodMood.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             scene = new Scene(root, 1280, 800);
             primaryStage.setTitle("FoodMood");
             primaryStage.setScene(scene);
