@@ -10,8 +10,8 @@ public interface Person {
     public void Setfname(String infname);
     public String Getlname();
     public void Setlname(String inlname);
-    public int Getuserid();
-    public void Setuserid(int inuserid);   
+    public int Getaccountid();
+    public void Setaccountid(int inuaccountid);   
     public String Getusername();
     public void Setusername(String inlogin);
     public String Getpassword();
