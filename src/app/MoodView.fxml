@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MoodViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MoodViewController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -37,7 +40,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="moodExcited" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodExcited" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" prefWidth="437.0" showTickLabels="true" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="40.0" top="5.0" />
                            </HBox.margin>
@@ -51,7 +54,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="moodHappy" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodHappy" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" prefWidth="437.0" showTickLabels="true" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="52.0" top="5.0" />
                            </HBox.margin>
@@ -65,7 +68,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="moodMeh" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodMeh" blockIncrement="1.0" max="10.0" prefWidth="437.0" showTickLabels="true" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="49.0" top="5.0" />
                            </HBox.margin>
@@ -79,7 +82,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="moodSad" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodSad" blockIncrement="1.0" max="10.0" prefWidth="437.0" showTickLabels="true" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="51.0" top="5.0" />
                            </HBox.margin>
@@ -93,7 +96,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="moodAngry" blockIncrement="1.0" max="10.0" prefWidth="437.0" snapToTicks="true">
+                        <Slider fx:id="moodAngry" blockIncrement="1.0" max="10.0" prefWidth="437.0" showTickLabels="true" snapToTicks="true">
                            <HBox.margin>
                               <Insets left="47.0" top="5.0" />
                            </HBox.margin>
@@ -113,7 +116,7 @@
                         <DatePicker fx:id="datePicker" promptText="Enter Today's Date" />
                      </children>
                   </HBox>
-                  <Button fx:id="moodButton" mnemonicParsing="false" text="Submit">
+                  <Button fx:id="moodButton" mnemonicParsing="false" onAction="#handleSubmit" text="Submit">
                      <font>
                         <Font size="20.0" />
                      </font>
