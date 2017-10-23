@@ -1,5 +1,6 @@
 package dao;
 
+import app.Environment;
 import foodmood.Mood;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 public class MoodDao {
 
+    Environment e = new Environment();
     ArrayList<Mood> m = new ArrayList<Mood>();
 
     /**
@@ -23,6 +25,12 @@ public class MoodDao {
      */
     public MoodDao() throws DaoException {
         m = createMoods();
+        if(e.getEnvironment()== "development"){
+            System.out.println("Loaded Moods:");
+            for(Mood md : m){
+                System.out.println(md.getMoodName());
+            }
+        }
     }
 
     /**
