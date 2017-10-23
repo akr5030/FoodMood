@@ -1,81 +1,119 @@
 package foodmood;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
- * Mood Record Class
+ * MoodRecord represents a mood value recorded by a user on a date.
  *
- * The food record class is what a user has entered for a mood.
+ * M02:
  *
  * @author aswecker
+ *
+ * M03-A04:
+ * @author jsm158
  */
+public class MoodRecord implements Quantifiable {
 
-public class MoodRecord {
-    private int id;
-    private int accountId;
-    private Date date;
-    private String mood;
-    
-    
+    private final String id;
+    private final String accountId;
+    private final LocalDate date;
+    private final int moodId;
+    private final String name;
+    private final double value;
+
     /**
-    * This is the default constructor for the Mood Record Class.
-    * @param id the id number of the mood
-    * @param accountId the account number of the user
-    * @param date the date the mood was logged
-    * @param mood the mood the user logged
-    */ 
-    public MoodRecord(int id, int accountId, Date date, String mood){
+     * This is the default constructor for the Mood Record Class.
+     *
+     * @param id the id number of the mood
+     * @param accountId the account number of the user
+     * @param date the date the mood was logged
+     * @param moodId the associated mood's ID
+     * @param moodName the associated mood's name
+     * @param value the value entered by the user
+     */
+    public MoodRecord(String id, String accountId, LocalDate date, int moodId, String moodName, double value) {
         this.id = id;
         this.accountId = accountId;
         this.date = date;
-        this.mood = mood;
+        this.moodId = moodId;
+        this.name = moodName;
+        this.value = value;
     }
-    
+
     /**
-    * Returns the mood ID
-    * @return An integer for the mood ID
-    */ 
-    public int getId(){
+     * Returns the mood ID
+     *
+     * @return the mood ID
+     */
+    public String getId() {
         return id;
     }
-    
-    public void setId(int id){
-        this.id=id;
-    }
-    
+
     /**
-    * Returns the date
-    * @return the date the user logged a mood
-    */ 
-    public int getAccountId(){
+     * Returns ID of the user account that logged the mood
+     *
+     * @return the account ID
+     */
+    public String getAccountId() {
         return accountId;
     }
-    
-    public void setAccountId(int accountId){
-        this.accountId=accountId;
-    }
-    
+
     /**
-    * Returns the date
-    * @return the date a user logged a mood
-    */ 
-    public Date getDate(){
+     * Returns the date the mood was recorded
+     *
+     * @return the date a user logged a mood
+     */
+    @Override
+    public LocalDate getDate() {
         return date;
     }
-    
-    public void setDate(Date date){
-        this.date=date;
-    }
-    
+
     /**
-    * Returns the mood name
-    * @return A string of the mood name
-    */ 
-    public String getMood(){
-        return mood;
+     *
+     * /**
+     * Returns the associated mood name
+     *
+     * @return A string of the mood name
+     */
+    @Override
+    public String getName() {
+        return name;
     }
-    
-    public void setMood(String mood){
-        this.mood=mood;
+
+    /**
+     * Returns the value logged for the mood
+     *
+     * @return the value
+     */
+    @Override
+    public double getValue() {
+        return value;
+    }
+
+    /**
+     * Returns the ID of the associated mood
+     *
+     * @return the mood ID
+     */
+    public int getMoodId() {
+        return moodId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (MoodRecord.class.isAssignableFrom(o.getClass())) {
+            MoodRecord m = (MoodRecord) o;
+            return (this.id.equals(m.id));
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 }
