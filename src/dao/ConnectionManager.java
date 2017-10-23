@@ -1,18 +1,30 @@
 package dao;
 
-import java.sql.Connection;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * Provides a connection to the application database.
+ * Provides file locations, creation of data directory, and deletion of data
+ * directory
+ *
+ * We chose to use files for storage, so this class returns the location of
+ * files, directories, and paths.
+ *
+ * We chose to use files for storage, so this class returns the location of
+ * files, directories, and paths.
  *
  * @author jsm158
  *
  */
 public class ConnectionManager {
 
-    private static final String HOST = "";
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
+    public static final String DATA_DIR = "data";
+    public static final String ACCOUNT_DATA_DIR = "accountData";
+    public static final String MOOD_RECORD_FILE = "moodRecords.txt";
 
     /**
      * Constructs a new ConnectionManager
@@ -21,13 +33,58 @@ public class ConnectionManager {
     }
 
     /**
-     * Returns a connection to the application database
+     * Create the data directory if it does not already exist
      *
-     * @return a database connection
-     * @throws dao.DaoException if there is an error connecting to the database
+     * @throws DaoException if the directory cannot be created
      */
-    public Connection getConnection() throws DaoException {
-        return null;
+    public static void createDatabaseIfNotExists() throws DaoException {
+
+        Path data = Paths.get(DATA_DIR);
+        if (!Files.exists(data)) {
+            try {
+                Files.createDirectory(data);
+                Files.createDirectory(Paths.get(DATA_DIR, ACCOUNT_DATA_DIR));
+            } catch (IOException ex) {
+                throw new DaoException("Could not create data directory", ex);
+            }
+        }
+
     }
 
+    /**
+     * Deletes the data directory
+     */
+    public static void deleteDatabase() {
+
+        deleteDatabaseHelper(Paths.get(DATA_DIR));
+
+    }
+
+    /**
+     * Helper method to recursively delete the files and subdirectories within
+     * the data directory
+     *
+     * Java requires that directories be empty before you can delete them
+     *
+     * @param path the path of the file/directory to be deleted
+     */
+    private static void deleteDatabaseHelper(final Path path) {
+        if (path != null) {
+
+            try {
+                if (!Files.isDirectory(path)) {
+                    Files.delete(path);
+                } else {
+                    
+                    // see http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html
+                    // for an explanation of streams and foreach
+                    Files.newDirectoryStream(path).forEach(filePath -> deleteDatabaseHelper(filePath));
+                    Files.delete(path);
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
