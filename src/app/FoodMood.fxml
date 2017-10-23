@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.FoodMoodController">
     <children>
-        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="Main">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <Label fx:id="errorLabel" prefHeight="26.0" prefWidth="530.0" text="Please select the enter mood tab for use case 1" textFill="RED" textOverrun="CLIP" visible="true">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.00" prefWidth="1000.0">
+                            <Label fx:id="errorLabel" wrapText="true" prefHeight="400.0" prefWidth="1000.0" text="Please select the enter mood tab for use case 1. Data will be written to the data directory and console." textFill="RED" textOverrun="ELLIPSIS" visible="true">
                                 <font>
                                     <Font size="20.0" />
                                 </font>
