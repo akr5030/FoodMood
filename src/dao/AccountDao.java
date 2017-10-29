@@ -1,6 +1,20 @@
 package dao;
 
+import accounts.Person;
+import accounts.User;
+import foodmood.Account;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Provides methods to read and write accounts to the database.
@@ -9,14 +23,15 @@ import java.util.ArrayList;
  *
  */
 public class AccountDao {
-    
-    private final ConnectionManager cm;
+
+    User u;
+    ArrayList<Person> personlist = new ArrayList<Person>();
 
     /**
      * Constructs a new AccountDao
      */
     public AccountDao() {
-        cm = new ConnectionManager();
+
     }
 
     /**
@@ -28,8 +43,18 @@ public class AccountDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Object> getAllAccounts() throws DaoException {
-        return null;
+    public boolean getAllAccounts(User u) throws DaoException {
+
+        boolean check = false;
+
+        if (this.personlist.isEmpty() == true || this.personlist.size() == 1) {
+
+            check = true;
+
+        }
+
+        return check;
+
     }
 
     /**
@@ -42,42 +67,28 @@ public class AccountDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public Object getAccount(int accountId) throws DaoException {
-        return null;
+    public boolean getAccount(int accountId) throws DaoException {
+
+        boolean check = false;
+        if (u.Getaccountid() == 001) {
+            check = true;
+
+        }
+
+        return check;
     }
 
-    /**
-     * Saves the specified account by creating a new record or overwriting the
-     * existing account
-     *
-     * @param account the account to save
-     * @throws dao.DaoException if there is an error connecting to the database
-     * or executing the query
-     */
-    public void saveAccount(Object account) throws DaoException {
+    public boolean checklogin(String username, String password) {
+
+        boolean check = false;
+        
+
+        if ("JDoe".equals(username)
+                && "123456".equals(password)) {
+            check = true;
+        }
+
+        return check;
 
     }
-
-    /**
-     * Permanently deletes the specified account
-     *
-     * @param account the account to delete
-     * @throws DaoException if there is an error connecting to the database or
-     * executing the query
-     */
-    public void deleteAccount(Object account) throws DaoException {
-
-    }
-
-    /**
-     * Permanently deletes the specified account
-     *
-     * @param accountId the ID of the account to delete
-     * @throws dao.DaoException if there is an error connecting to the database
-     * or executing the query
-     */
-    public void deleteAccount(int accountId) throws DaoException {
-
-    }
-
 }

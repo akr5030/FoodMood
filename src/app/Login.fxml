@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginController">
+   <children>
+      <VBox id="VBox" alignment="CENTER" layoutX="39.0" layoutY="28.0" prefHeight="343.0" prefWidth="528.0">
+         <children>
+            <VBox id="MainLayout" prefHeight="353.0" prefWidth="555.0">
+               <children>
+                  <FlowPane prefHeight="69.0" prefWidth="528.0">
+                     <children>
+                        <HBox prefHeight="69.0" prefWidth="528.0">
+                           <children>
+                              <HBox id="HBox" prefHeight="69.0" prefWidth="537.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="528.0" text="Welcome" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="50.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+                  <TextField fx:id="username" alignment="CENTER" promptText="Username">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="password" alignment="CENTER" promptText="Password">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Button mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="21.0" prefWidth="529.0" text="Login">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="errorLabel" prefHeight="26.0" prefWidth="530.0" text="Username/Password Incorrect" textFill="RED" textOverrun="CLIP" visible="false">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

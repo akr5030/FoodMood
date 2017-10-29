@@ -4,7 +4,8 @@ IST 412 Group 7 project
 ***
 # Account information
 
-// TODO list accounts here
+Username: JDoe
+Password: 123456
 
 
 
@@ -26,13 +27,25 @@ IST 412 Group 7 project
 * dao.ConnectionManagerTest: Jennifer
 * foodmood.MoodRecord: Jennifer
 * dao.MoodRecordDao: Jennifer
+* app.MoodViewController (handleButton method): Jennifer
+* app.MoodViewController: Walt
+* app.Login: Walt
+* app.LoginController: Walt
+* app.MoodView: Walt
+* foodMood.Mood: Matt
+* dao.MoodDao: Matt
+* Person: Alyson
+* User: Alyson
+* AccountDao: Alyson
 
 
 
 ### Pattern class implementations for M03-A02
 
 #### Alyson
-* 
+* Meal
+* MealFactory
+* FoodRecordView
 
 #### Jennifer
 
@@ -44,7 +57,8 @@ IST 412 Group 7 project
 
 
 #### Matt
-*
+* Environment
+* MoodDao 
 
 #### Walt
 * 

@@ -111,7 +111,9 @@ public class MoodRecordDao {
                 Files.createFile(data);
             }
             bw = Files.newBufferedWriter(data, StandardOpenOption.APPEND);
-            bw.write(writeRecord(record));
+            String recordText = writeRecord(record);
+            System.out.printf("New mood recorded: [%s]%n", recordText);
+            bw.write(recordText);
             bw.write("\n");
             bw.flush();
         } catch (IOException ex) {
