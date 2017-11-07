@@ -1,7 +1,8 @@
 package foodmood;
 
 /**
- *
+ * Interface class for food.
+ * 
  * @author aswecker
  */
 public interface Meal {
