@@ -4,12 +4,9 @@ import foodmood.FoodRecord;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,6 +63,12 @@ public class FoodRecordDao {
         // for testing
         return getFoodRecords(startDate, endDate, 0);
     }
+    
+    /**
+     * Saves the food record that a user enters.
+     * @param foodRecord the food record to save
+     * @throws dao.DaoExcpetion if there is an error saving food to the database
+     */
 
     public void saveFoodRecord(FoodRecord foodRecord) throws DaoException {
         ArrayList<FoodRecord> foods = new ArrayList<>();
