@@ -1,7 +1,6 @@
 package foodmood;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Food Record Class
