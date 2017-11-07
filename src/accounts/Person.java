@@ -1,7 +1,7 @@
 package accounts;
 
 /**
- *
+ * Interface for the user.
  * @author aswecker
  */
 public interface Person {
