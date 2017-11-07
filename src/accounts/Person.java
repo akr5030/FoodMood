@@ -6,24 +6,24 @@ package accounts;
  */
 public interface Person {
 
-    public String Getfname();
+    public String getFName();
 
-    public void Setfname(String infname);
+    public void setFName(String infname);
 
-    public String Getlname();
+    public String getLName();
 
-    public void Setlname(String inlname);
+    public void setLName(String inlname);
 
-    public int Getaccountid();
+    public int getAccountId();
 
-    public void Setaccountid(int inuaccountid);
+    public void setAccountId(int inaccountid);
 
-    public String Getusername();
+    public String getUsername();
 
-    public void Setusername(String inlogin);
+    public void setUsername(String inlogin);
 
-    public String Getpassword();
+    public String getPassword();
 
-    public void Setpassword(String inpassword);
+    public void setPassword(String inpassword);
 
 }
