@@ -2,19 +2,7 @@ package dao;
 
 import accounts.Person;
 import accounts.User;
-import foodmood.Account;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Provides methods to read and write accounts to the database.
@@ -25,7 +13,7 @@ import java.util.logging.Logger;
 public class AccountDao {
 
     User u;
-    ArrayList<Person> personlist = new ArrayList<Person>();
+    ArrayList<Person> personList; 
 
     /**
      * Constructs a new AccountDao
@@ -47,7 +35,7 @@ public class AccountDao {
 
         boolean check = false;
 
-        if (this.personlist.isEmpty() == true || this.personlist.size() == 1) {
+        if (this.personList.isEmpty() == true || this.personList.size() == 1) {
 
             check = true;
 
@@ -70,13 +58,20 @@ public class AccountDao {
     public boolean getAccount(int accountId) throws DaoException {
 
         boolean check = false;
-        if (u.Getaccountid() == 001) {
+        if (u.getAccountId()== 001) {
             check = true;
 
         }
 
         return check;
     }
+    
+    /**
+     * Checks the username and password so a user can login.
+     * @param username the username a user enters
+     * @param password the password a user enters
+     * @return allows the user to login
+     */
 
     public boolean checklogin(String username, String password) {
 
