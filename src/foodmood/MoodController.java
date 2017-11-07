@@ -1,16 +1,9 @@
 package foodmood;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import testHarness.TestHarness;
 
 /**
  * FXML Controller class
@@ -29,8 +22,8 @@ public class MoodController implements Initializable {
     /**
      * Initializes the controller class.
      *
-     * @param url Document URL
-     * @param rb resource bundle
+     * @param url the url (path) to the associated FXML document
+     * @param rb the application's resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,7 +33,10 @@ public class MoodController implements Initializable {
 //        TestHarness.getInstance().changeScene("/analytics/MoodLogView.fxml");
     }
 
-    // Add a mood to the 'database'
+    /**
+     * Add a mood to the 'database'.
+     */
+    // 
     public void addMood() {
 //        Mood m = new Mood(1, "Happy");
 //        Mood m1 = new Mood(1, "Sad");
@@ -79,7 +75,7 @@ public class MoodController implements Initializable {
     }
 
     /**
-     * Read the file.
+     * Read the file from the 'database'.
      */
     public void readMood() {
 //        BufferedReader reader = null;
