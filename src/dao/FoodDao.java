@@ -23,6 +23,17 @@ public class FoodDao {
         cm = new ConnectionManager();
         f = createFoods();
     }
+    
+    /**
+     * Returns a list of all foods in the database
+     *
+     * @return a list of foods
+     * @throws DaoException if there is an error connecting to the database or
+     * executing the query
+     */
+    public ArrayList<Food> getAllFoods() throws DaoException {
+        return f;
+    }
 
     /**
      * Searches the application database for a food matching the specified term

@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class FoodRecord implements Quantifiable {
     private final String id;
-    private final int accountId;
+    private final String accountId;
     private final LocalDate date;
     private final int foodId;
     private final String foodName;
@@ -28,7 +28,7 @@ public class FoodRecord implements Quantifiable {
     * @param date the date the food was logged
     * @param food the food the user logged
     */ 
-    public FoodRecord(String id, int accountId, LocalDate date, int foodId, String foodName, double value){
+    public FoodRecord(String id, String accountId, LocalDate date, int foodId, String foodName, double value){
         this.id = id;
         this.accountId = accountId;
         this.date = date;
@@ -41,7 +41,7 @@ public class FoodRecord implements Quantifiable {
     * Returns the food ID
     * @return An integer for the food ID
     */ 
-    public int getId(){
+    public String getId(){
         return id;
     }
     
@@ -49,7 +49,7 @@ public class FoodRecord implements Quantifiable {
     * Returns the accountID
     * @return the date the user logged a food
     */ 
-    public int getAccountId(){
+    public String getAccountId(){
         return accountId;
     }
     
