@@ -1,6 +1,9 @@
 package foodmood;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.Objects;
+
 
 /**
  * Food Record Class
@@ -10,11 +13,13 @@ import java.time.LocalDate;
  * @author aswecker
  */
 
-public class FoodRecord {
-    private int id;
-    private int accountId;
-    private LocalDate date;
-    private String food;
+public class FoodRecord implements Quantifiable {
+    private final String id;
+    private final String accountId;
+    private final LocalDate date;
+    private final int foodId;
+    private final String foodName;
+    private final double value;
     
     
     /**
@@ -24,58 +29,82 @@ public class FoodRecord {
     * @param date the date the food was logged
     * @param food the food the user logged
     */ 
-    public FoodRecord(int id, int accountId, LocalDate date, String food){
+    public FoodRecord(String id, String accountId, LocalDate date, int foodId, String foodName, double value){
         this.id = id;
         this.accountId = accountId;
         this.date = date;
-        this.food = food;
+        this.foodId = foodId;
+        this.foodName = foodName;
+        this.value = value;
     }
     
     /**
     * Returns the food ID
     * @return An integer for the food ID
     */ 
-    public int getId(){
+    public String getId(){
         return id;
     }
     
-    public void setId(int id){
-        this.id=id;
-    }
-    
     /**
-    * Returns the date
+    * Returns the accountID
     * @return the date the user logged a food
     */ 
-    public int getAccountId(){
+    public String getAccountId(){
         return accountId;
-    }
-    
-    public void setAccountId(int accountId){
-        this.accountId=accountId;
     }
     
     /**
     * Returns the date
     * @return the date a user logged a food
-    */ 
+    */
+    @Override
     public LocalDate getDate(){
         return date;
     }
     
-    public void setDate(LocalDate date){
-        this.date=date;
+    /**
+    * Returns the associated food name
+    * @return A string of the food name
+    */ 
+    @Override
+    public String getName(){
+        return foodName;
     }
     
     /**
-    * Returns the food name
-    * @return A string of the food name
+    * Returns the value logged for the food
+    * @return the value
     */ 
-    public String getFood(){
-        return food;
+    @Override
+    public double getValue(){
+        return value;
     }
     
-    public void setFood(String food){
-        this.food=food;
+    /**
+     * Returns the ID of the associated food
+     *
+     * @return the food ID
+     */
+    public int getFoodId() {
+        return foodId;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (FoodRecord.class.isAssignableFrom(o.getClass())) {
+            FoodRecord f = (FoodRecord) o;
+            return (this.id.equals(f.id));
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+    
 }
