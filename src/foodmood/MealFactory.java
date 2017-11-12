@@ -1,7 +1,9 @@
 package foodmood;
 
 /**
- *
+ * MealFactory for foods. Gives the option for
+ * meal type and food
+ * 
  * @author aswecker
  */
 public class MealFactory implements Meal {

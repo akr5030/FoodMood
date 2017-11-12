@@ -1,30 +1,16 @@
 package foodmood;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import static java.lang.System.out;
+
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.Initializable;
-import testHarness.TestHarness;
 
 /**
- *
+ * FXML Controller Class.
  * @author aswecker
  */
 public class FoodController implements Initializable {
 
-    private static final int Food_ID = 1;
-    private static final int Food_Name_ID = 1;
-    private static final int Serving_Size_ID = 1;
-    private static final int Food_Group_ID = 1;
 
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
@@ -46,9 +32,6 @@ public class FoodController implements Initializable {
 //        TestHarness.getInstance().changeScene("/foodmood/FoodRecordView.fxml");
     }
 
-    /**
-     * Gives the user the option to add a food.
-     */
     /**
      * Gives the user the option to add a food.
      *

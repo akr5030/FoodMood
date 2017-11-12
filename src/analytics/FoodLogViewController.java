@@ -2,11 +2,9 @@ package analytics;
 
 import dao.DaoException;
 import dao.FoodRecordDao;
-import foodmood.FoodController;
 import foodmood.FoodRecord;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -16,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TreeView;
-import testHarness.*;
 
 /**
  * The controller for the FXML food log viewer.
@@ -81,12 +78,20 @@ public class FoodLogViewController implements Initializable {
 //        // Move on to the next test
 //        TestHarness.getInstance().changeScene("/foodmood/Mood.fxml");
     }
+    
+    /**
+     * Updates the view for the food log.
+     */
 
     public void updateView() {
 //        LocalDate startDate = LocalDate.of(2017, Month.SEPTEMBER, 1);
 //        LocalDate endDate = LocalDate.of(2017, Month.SEPTEMBER, 6);
 //        getRecords(startDate, endDate);
     }
+    
+    /**
+     * Deletes a food record.
+     */
 
     public void deleteRecord() {
 //        foods.clear();

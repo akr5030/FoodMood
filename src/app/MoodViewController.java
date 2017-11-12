@@ -45,6 +45,8 @@ public class MoodViewController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url the url (path) to the associated FXML document
+     * @param rb the application's resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
