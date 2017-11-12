@@ -39,12 +39,15 @@ public class LoginController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url the url (path) to the associated FXML document
+     * @param rb the application's resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+    //Handler for the login button.
     @FXML
     public void loginButtonHandler(ActionEvent event) {
 

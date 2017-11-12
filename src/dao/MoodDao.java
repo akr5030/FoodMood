@@ -2,9 +2,7 @@ package dao;
 
 import app.Environment;
 import foodmood.Mood;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Provides methods for reading mood objects from the database.
@@ -18,14 +16,15 @@ import java.util.List;
 public class MoodDao {
 
     Environment e = new Environment();
-    ArrayList<Mood> m = new ArrayList<Mood>();
+    ArrayList<Mood> m; 
 
     /**
      * Constructs a new MoodDao
      */
     public MoodDao() throws DaoException {
         m = createMoods();
-        if(e.getEnvironment()!= null && e.getEnvironment()== "development"){
+        boolean getMoodName = ( (e.getEnvironment() != null) || ("development".equals(e.getEnvironment())));
+       {
             System.out.println("Loaded Moods:");
             for(Mood md : m){
                 System.out.println(md.getMoodName());
@@ -68,6 +67,13 @@ public class MoodDao {
         }
         return rtnValue;
     }
+    
+    /**
+     * Lists all the moods a user can select.
+     * @return the mood that a user selects
+     * @throws dao.DaoException if there is an error connecting to the database
+     * or executing the query
+     */
 
     public ArrayList<Mood> createMoods() throws DaoException {
         Mood m = new Mood(1, "Excited");

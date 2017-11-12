@@ -1,4 +1,4 @@
-package dao;
+=package dao;
 
 import foodmood.Mood;
 import foodmood.MoodRecord;
