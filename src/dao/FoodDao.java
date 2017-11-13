@@ -31,7 +31,7 @@ public class FoodDao {
      * @throws DaoException if there is an error connecting to the database or
      * executing the query
      */
-    public ArrayList<Food> getAllFoods() throws DaoException {
+    public ArrayList<Food> getAllFoods() {
         return f;
     }
 
@@ -89,18 +89,15 @@ public class FoodDao {
      * @throws DaoException if there is an error connecting to the database or
      * executing the query
      */
-    public Food getFood(int foodId) throws DaoException {
+    public Food getFood(int foodId)  {
         Food rtnValue = null;
-        try {
+     {
             for (Food fd : f) {
                 if (fd.getId() == foodId) {
                     rtnValue = fd;
                 }
             }
-        } catch (NumberFormatException e) {
-            System.out.println("Error in reading CSV file");
-            //e.printStackTrace();
-        }
+        } 
         return rtnValue;
     }
 
@@ -124,7 +121,7 @@ public class FoodDao {
      * @throws dao.DaoException if there is an error connecting to the database
      * or executing the query
      */
-    public ArrayList<Food> createFoods() throws DaoException {
+    public ArrayList<Food> createFoods() {
         Food f = new Food(1, "Milk", 1,"Dairy");
         Food f1 = new Food(2, "Eggs", 2,"Dairy");
         Food f2 = new Food(3, "Steak", 2,"Meat");
@@ -144,7 +141,7 @@ public class FoodDao {
 
         ArrayList<Food> foods = new ArrayList<Food>();
 
-        try {
+       {
             foods.add(f);
             foods.add(f1);
             foods.add(f2);
@@ -162,12 +159,11 @@ public class FoodDao {
             foods.add(f14);
             foods.add(f15);
 
-        } catch (Exception ex) {
-            System.out.println("Error creating moods....");
-//            e.printStackTrace();
-        }
+        } 
 
         return foods;
     }
+    
+   
 
 }
