@@ -140,7 +140,7 @@ public class FoodLogViewController implements Initializable {
         foods = new ArrayList<>();
         FoodRecordDao dao = new FoodRecordDao();
         try {
-            foods = dao.getFoodRecords(LocalDate.now(), LocalDate.now());
+            foods = dao.getFoodRecords(LocalDate.now(), LocalDate.now(), "");
         } catch (DaoException ex) {
             Logger.getLogger(FoodLogViewController.class.getName()).log(Level.SEVERE, null, ex);
         }

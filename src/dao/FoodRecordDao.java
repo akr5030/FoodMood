@@ -114,17 +114,9 @@ public class FoodRecordDao {
 
     private void saveFoodRecord(String accountId, LocalDate date, int foodId, double value) throws DaoException {
         BufferedWriter bw = null;
-
-    public ArrayList<FoodRecord> getFoodRecords(LocalDate startDate, LocalDate endDate) throws DaoException {
-        // for testing
-        return getFoodRecords(startDate, endDate, 0);
-    }
     
-    /**
-     * Saves the food record that a user enters.
-     * @param foodRecord the food record to save
-     * @throws dao.DaoExcpetion if there is an error saving food to the database
-     */
+    
+    
 
 
         Path data = Paths.get(ConnectionManager.DATA_DIR,

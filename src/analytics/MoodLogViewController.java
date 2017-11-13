@@ -31,8 +31,7 @@ public class MoodLogViewController implements Initializable {
     /**
      * ObservableList for the mood records to display
      */
-    @FXML
-    private ArrayList<MoodRecord> moodList;
+    
 
     /**
      * The line chart for displaying moods
