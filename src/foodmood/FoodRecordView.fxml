@@ -7,20 +7,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="foodmood.FoodRecordViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="foodmood.FoodRecordViewController">
    <children>
-      <Pane layoutX="14.0" layoutY="14.0" prefHeight="334.0" prefWidth="391.0">
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="334.0" prefWidth="548.0">
          <children>
             <Label layoutX="27.0" layoutY="29.0" prefHeight="17.0" prefWidth="201.0" text="Log a Food">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="27.0" layoutY="80.0" mnemonicParsing="false" text="Breakfast" />
-            <Button layoutX="27.0" layoutY="129.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Lunch" />
-            <Button layoutX="27.0" layoutY="177.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Dinner" />
-            <Button layoutX="27.0" layoutY="224.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Snack" />
+            <Button layoutX="266.0" layoutY="84.0" mnemonicParsing="false" text="Add" />
+            <ListView fx:id="foodListView" layoutX="28.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </Pane>
    </children>
