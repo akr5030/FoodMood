@@ -25,9 +25,7 @@ public class FoodRecordViewController implements Initializable {
 private ListView foodListView;
     
 
-    
-    
-    //private final ArrayList foods = new ArrayList();
+   
     
     
 
@@ -39,7 +37,7 @@ private ListView foodListView;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //ListView<String> list = new ListView<>();
+       
         
 ObservableList<String> items = FXCollections.observableArrayList("Milk","Pizza");        
 

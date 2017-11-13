@@ -29,10 +29,6 @@ public class FoodMoodController implements Initializable {
     
   
     
-    //private final ObservableList<String> food = FXCollections.observableArrayList();
-    
-    //private ArrayList<FoodDao> food;
-    
     
     
     
