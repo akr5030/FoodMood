@@ -228,8 +228,10 @@ public class TestHarness {
         logTestStart("testFoodLogViewControllerGetFoodRecords");
         boolean success = false;
 
-        if (records.size() == 1 && records.get(0).getId() == 1) {
-            success = true;
+        if (records.size() == 1) {
+            if (records.get(0).getId() == "1") {
+                success = true;
+            }
         }
 
         logTestResult("testFoodLogViewControllerGetFoodRecords", success);
